@@ -1,0 +1,206 @@
+/* CSS for preference page */
+
+/* User preferences form */
+form {
+    font-family: "Roboto", "Fredoka";
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    align-self: center;
+    border: 2px solid #ffa51e;
+    border-radius: 12px;
+    padding: 1%;
+  }
+    
+  .err-msg {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 10px 15px;
+    background-color: #fff;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    color: red;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  #doctor_preferences_form {
+    position: relative;
+    top: 10%;
+    
+  }
+
+  input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 10px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+  }
+
+  input[type=text] {
+      background-color: #CFCFCF;
+  }
+
+  button[type=button] {
+    background-color: #ffa51e;
+    color: white;
+    padding: 15px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 35%;
+    border-radius: 12px;
+    font-size: x-large;
+    text-align: center;
+  }
+
+  #password-button {
+    width: 100%;
+    height: 50px;
+    margin-top: 60px;
+  }
+
+  #modal-content-patient-passsword {
+    width: 50%;
+  }
+
+  .err-msg {
+    position: relative;
+    top: -185%;
+  }
+
+  .text-bio{
+    width: fit-content;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 12px;
+    background-color: #CFCFCF;
+    font-weight: normal;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+  }
+
+  .Pref_name_{
+    display: flex;
+    flex-basis: 30%;
+    flex-direction: row;
+    justify-content: space-between
+  }
+
+  .Pref_birth{
+    display: flex;
+    flex-basis: 15%;
+    flex-direction: column;
+  }
+
+  .Pref_username{
+    display: flex;
+    flex-basis: 15%;
+    flex-direction: column;
+  }
+
+  .Pref_email{
+    display: flex;
+    flex-basis: 15%;
+    flex-direction: column;
+  } 
+
+  .Pref_password{
+    display: flex;
+    flex-basis: 15%;
+    flex-direction: column;
+  }
+
+  .Pref_bio{
+    display: flex;
+    flex-basis: 40%;
+    flex-direction: column;
+  }
+
+  a {
+    color: white;
+  }
+
+  #home-button-anchor {
+    margin-top: 150px;
+    margin-bottom: 100px;
+    align-self: center;
+  }
+  
+  #home-from-edit-threshold {
+    background-color: #0375B4;
+    color: white;
+    padding: 20px 30px;
+    border: none;
+    cursor: pointer;
+    border-radius: 12px;
+    font-size: xx-large;
+    white-space: pre-line;
+    width: 100%;
+  }
+
+  #back-to-pref {
+    margin-top: -200px;
+    margin-bottom: 100px;
+    align-self: center;
+  }
+
+  a.back-to-patient-home {
+    margin: 80px 0 70px 0;
+    width: 360px;
+    align-self: center;
+  }
+
+  a.back-to-patient-home button {
+    background-color: #0375B4;
+    color: white;
+    padding: 20px 30px;
+    border: none;
+    cursor: pointer;
+    border-radius: 12px;
+    font-size: x-large;
+    white-space: pre-line;
+    width: 100%;
+  }
+
+/*     Design for TABLET screens     */
+
+@media only screen and (max-width: 1025px) { 
+
+  form {
+    width: 50%
+  }
+
+  #change_password_button {
+    width: 100%;
+  }
+
+}
+
+/*     Design for MOBILE screens    */
+
+@media only screen and (max-width: 414px) {
+  
+  form {
+    width: 90%;
+    padding: 2%;
+  }
+
+  h3 {
+    text-align: left;
+  }
+
+  #modal-content-patient-passsword {
+    width: 95%;
+  }
+
+
+
+
+}

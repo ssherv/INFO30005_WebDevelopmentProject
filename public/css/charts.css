@@ -1,0 +1,120 @@
+.charts-container {
+    margin: 50px 15% 100px 15%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.left-container {
+    flex-basis: 30%;
+}
+
+.right-container {
+    flex-basis: 70%;
+    margin-top: 30px;
+}
+
+.charts-container h1 {
+    text-align: left;
+}
+
+.input-metrics-container {
+    height: 340px;
+}
+
+.input-metrics-container h3 {
+    color: #0375B4;
+}
+
+.metric-item {
+    margin: 10px 0;
+}
+
+.metric-item label {
+    margin-left: 20px;
+}
+
+#generate-chart-btn {
+    background-color: #ffa51e;
+    color: white;
+    padding: 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 12px;
+    font-size: larger;
+    white-space: pre-line;
+    margin-top: 10px;
+    width: 220px;
+}
+
+#hist-from-chart {
+    align-self: center;
+    margin: 30px 0 100px 0;
+}
+
+#home-from-chart-btn {
+    background-color: #0375B4;
+    color: white;
+    padding: 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 12px;
+    font-size: x-large;
+    white-space: pre-line;
+    display: block;
+}
+
+@media only screen and (max-width: 1025px) { /* for tablet screens  */
+
+    .charts-container {
+        margin: 0 5% 100px 5%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .input-metrics-container {
+        height: 250px;
+    }
+
+    .right-container {
+        margin-left: 5%;
+        flex-basis: 60%;
+    }
+
+    #hist-from-chart {
+        align-self: center;
+        margin: -30px 0 100px 0;
+    }
+}
+
+@media only screen and (max-width: 376px) { /* for tablet screens  */
+
+    .charts-container {
+        margin: 0 3% 100px 3%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .left-container {
+        flex-basis: 100%;
+    }
+    
+    .left-container h3 {
+        text-align: left;
+    }
+
+    .input-metrics-container {
+        margin-left: 65px;
+    }
+
+    h4 {
+        text-align: center;
+    }
+
+    .right-container {
+
+        flex-basis: 100%;
+    }
+
+    
+
+}

@@ -1,0 +1,106 @@
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/css/register_patient.css" />
+</head>
+
+<body>
+
+  <div class="register-patient-intro">
+    <h3 style="color:red">!!!   Make sure to tick all measurements you want your patient to record !!!</h3> <br>
+    <h3 style="color:red">If limits are not set they will default to standard values</h3>
+  </div>
+
+  <form
+    id="register-patient-form"
+    name="register-patient-form"
+    action="/dr_home/register_patient"
+    method="POST"
+    class="register-patient-container"
+    onsubmit="return validateNewPatientForm()"
+  >
+
+    <div class="patient-details">
+      <h2 class="blue-emphasis">Personal details:</h2>
+      <br /><br />
+
+      <label>First name: </label>
+      <input type="text" name="first_name" id="first_name" required />
+
+      <label>Last name: </label>
+      <input type="text" name="last_name" id="last_name" required />
+
+      <label>Email: </label>
+      <input type="email" name="patient_email" id="patient_email" required />
+
+      <label>Screen name: </label>
+      <input type="text" name="screen_name" id="screen_name" maxlength="12" required />
+
+      <label>Year of birth: </label>
+      <input
+        type="number"
+        name="birth_year"
+        id="birth_year"
+        min="1900"
+        max="2022"
+        step="1"
+        required
+      />
+
+      <label>Patient bio: </label>
+      <textarea name="bio" id="bio" rows="5" maxlength="400"></textarea>
+    </div>
+
+    <div class="input-metrics">
+      <h2 class="blue-emphasis">Measurements required:</h2>
+      <br /><br />
+      <h3 class="low-t">LOW threshold</h3>
+      <h3 class="high-t">HIGH threshold</h3>
+
+      <div class="metric-item">
+        <label>Blood glucose:</label>
+        <input type="checkbox" name="blood_glucose_checkbox" value="yes" id="_bg" onclick="toggleMetricInput(this.id)"/>
+        <input type="number" name="blood_glucose_low" min="0" max="100" step="0.1" id="_bg-low" disabled />
+        <input type="number" name="blood_glucose_high" min="0" max="100" step="0.1" id="_bg-high" disabled />
+        <p>(mmol/L)</p>
+      </div>
+
+      <div class="metric-item">
+        <label>Insulin dosage: </label>
+        <input type="checkbox" name="insulin_checkbox" value="yes" id="_id" onclick="toggleMetricInput(this.id)"/>
+        <input type="number" name="insulin_dose_low" min="0" max="100" id="_id-low" disabled />
+        <input type="number" name="insulin_dose_high" min="0" max="100" id="_id-high" disabled />
+        <p>(count)</p>
+      </div>
+
+      <div class="metric-item">
+        <label>Weight: </label>
+        <input type="checkbox" name="weight_checkbox" value="yes" id="_weight" onclick="toggleMetricInput(this.id)"/>
+        <input type="number" name="weight_low" min="0" max="400" step="0.1" id="_weight-low" disabled />
+        <input type="number" name="weight_high" min="0" max="400" step="0.1" id="_weight-high" disabled />
+        <p>(kg)</p>
+      </div>
+
+      <div class="metric-item">
+        <label>Exercise: </label>
+        <input type="checkbox" name="exercise_checkbox" value="yes" id="_exercise" onclick="toggleMetricInput(this.id)"/>
+        <input type="number" name="exercise_low" min="0" max="100000" id="_exercise-low" disabled />
+        <input type="number" name="exercise_high" min="0" max="100000" id="_exercise-high" disabled />
+        <p>(step count)</p>
+      </div>
+    </div>
+  </form>
+
+  <div class="buttons">
+    <button type="reset" form="register-patient-form">Reset <br /> form</button>
+    <button type="submit" form="register-patient-form">Register <br /> patient</button>
+  </div>
+
+  <a id="home-button-anchor" href="/dr_home">
+      <button id="home-from-edit-threshold">Back to dashboard</button>
+  </a>
+ 
+
+</body>
+

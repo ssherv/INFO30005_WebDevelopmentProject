@@ -1,0 +1,529 @@
+* {
+  /* padding: 0; */
+  margin: 0;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+/* Flex boxes to position elements outside the table */
+.table_out_flex {
+  display: flex;
+  margin-left: 20%;
+  margin-right: 20%;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 60%;
+}
+
+/* Legend table is displayed upon hovering */
+div hover {
+  font-size: medium;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  display: inline-block;
+}
+legend_list {
+  display: inline;
+  margin: 0;
+  border-radius: 20px;
+  z-index: 2;
+}
+legend_list legend_element {
+  display: inline-block;
+  margin: 5px;
+  color: black;
+  font-size: large;
+  padding-bottom: 10px;
+}
+legend_list legend_element:hover legend_list {
+  display: block;
+  padding:10px;
+}
+legend_list legend_element legend_list {
+  position: absolute;
+  display: none;
+}
+legend_list legend_element legend_list legend_element {
+  background: white;
+  display: block;
+}
+
+legend_list legend_element legend_list{
+  border-style:solid; 
+  color:orange; 
+  margin-right:0.5%; 
+  background: white;
+}
+
+legend_list legend_element legend_list legend_element legend_element_overlimit{
+  background-color:lightcoral;
+}
+legend_list legend_element legend_list legend_element legend_element_underlimit{
+  background-color: lightblue;
+}
+legend_list legend_element legend_list legend_element legend_element_entry{
+  padding-top:10px;
+  border-style: solid none none none;
+  margin-right: 5px;
+  color:black
+}
+
+/* Message is displayed by hovering the message icon */
+.icon_box {
+  position: relative;
+  display: inline-block;
+}
+
+.icon_box .comment {
+  visibility: hidden;
+  width: 180px;
+  border-style: solid;
+  background-color: white;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  top: 150%;
+  left: 50%;
+  margin-left: -90px;
+}
+
+.icon_box .comment::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent black transparent;
+}
+
+.icon_box:hover .comment {
+  visibility: visible;
+}
+
+
+p {
+  margin-left: 4px;
+  margin-right: 4px;
+}
+
+/*          DOCTOR HOME - DASHBOARD         */
+.dr-home-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 100px 375px 0 375px;
+  justify-content: space-between;
+}
+
+.dr-home-header h1 {
+  flex-basis: 55%;
+  text-align: left;
+}
+
+#patient_comments_btn {
+  background-color: #0375B4;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: larger;
+  padding: 20px;
+  cursor: pointer;
+  width: 250px;
+}
+
+#register_patient_btn {
+  background-color: #ffa51e;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: larger;
+  padding: 20px;
+  cursor: pointer;
+  width: 250px;
+}
+
+.dr-home-dashboard {
+  margin: 0 375px;
+}
+
+.dr-home-dashboard table {
+  text-align: middle;
+  border-collapse: collapse; 
+}
+
+.dr-home-dashboard th {
+  background-color: #8665f7;
+  color: white;
+  font-size: large;
+  padding: 10px;
+  width: 234px;
+}
+
+th span {
+  font-weight: normal;
+}
+
+.dr-home-dashboard a {
+  font-weight: bold;
+  color: #1e1eee;
+}
+
+.dr-home-dashboard td {
+  background-color: white;
+  padding: 10px;
+  border: 1px solid rgb(211, 211, 211);
+}
+
+span.comment {
+  text-align: center;
+}
+
+/*          INDIVIDUAL PATIENT PAGE          */
+.measurement-flex {
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.measurement-item {
+  flex-basis: 50%;
+}
+
+.dashboard-item{
+  flex-basis: 33.33%;
+}
+.indiv-patient-parent-container {
+  display: flex;
+  flex-direction: row;
+  margin-top: 50px;
+}
+
+.left-child-container {
+  flex-basis: 60%;
+  padding-left: 100px;
+}
+
+.right-child-container {
+  flex-basis: 43%;
+  padding-left: 100px;
+}
+
+.left-header {
+  display: flex;
+  align-items: center;
+  margin: 50px 0 20px 0;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+div.left-header h1 {
+  flex-basis: 50%;
+  text-align: left;
+}
+
+#home-from-indiv-pt-btn {
+  background-color: #949697;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: large;
+  cursor: pointer;
+  width: 140px;
+  height: 70px;
+}
+
+#view-charts-btn {
+  background-color: #0375B4;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: large;
+  cursor: pointer;
+  width: 140px;
+  height: 70px;
+}
+
+#edit-patient-threshold-btn {
+  background-color: #ffa51e;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: large;
+  cursor: pointer;
+  width: 200px;
+  height: 70px;
+}
+
+#home-from-indiv-patient {
+  background-color: #0375B4;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: large;
+  cursor: pointer;
+  width: 200px;
+  height: 70px;
+}
+
+.flex-span {
+  flex: 1 1 auto;
+}
+
+.patient-health-details-section table {
+  text-align: left;
+  border-collapse: collapse;
+  margin-top: 20px;
+  margin-bottom: 100px;
+}
+
+.patient-health-details-section th {
+  background-color: #8665f7;
+  color: white;
+  padding: 5px 10px;
+}
+
+.patient-health-details-section td {
+  background-color: white;
+  padding: 10px;
+  border: 1px solid rgb(211, 211, 211);  
+}
+
+.support-message-section {
+  margin: 50px 0 100px 0; 
+}
+
+.support-message-section input[type="text"] {
+  margin-top: 20px;
+  padding: 12px 20px;
+  width: 400px;
+  border: 2px solid #ccc;
+  box-sizing: border-box;
+  border-radius: 12px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.support-message-section button[type="submit"] {
+  background-color: #ffa51e;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 12px;
+  font-size: large;
+  width: 150px;
+  margin-left: 15px;
+}
+
+.clinical-notes-section table {
+  text-align: left;
+  border-collapse: collapse;
+  margin-top: 20px;
+  margin-bottom: 100px;
+}
+
+.clinical-notes-section th {
+  background-color: #8665f7;
+  color: white;
+  padding: 5px 10px;
+}
+
+.clinical-notes-section td {
+  background-color: white;
+  padding: 10px;  
+  border: 1px solid rgb(211, 211, 211);
+}
+
+.new-note-section {
+  margin-top: 20px;
+}
+
+.clinical-notes-section input[type="text"] {
+  margin-top: 20px;
+  padding: 12px 20px;
+  width: 400px;
+  border: 2px solid #ccc;
+  box-sizing: border-box;
+  border-radius: 12px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.clinical-notes-section button[type="submit"] {
+  background-color: #ffa51e;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 12px;
+  font-size: large;
+  width: 150px;
+  margin-left: 15px;
+}
+
+/*          EDITING THRESHOLDS          */
+
+.edit-patient-threshold-container {
+  display: flex;
+  margin-top: 50px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.edit-patient-threshold-container form {
+  width: 110%;
+  align-self: center;
+}
+
+.edit-patient-threshold-container h3 {
+  display: inline;
+  margin-bottom: 20px;
+}
+
+.edit-metric-item {
+  padding-top: 15px;
+  padding-bottom: 30px;
+} 
+
+
+.low-t {
+  margin-left: 295px;
+}
+
+
+.edit-metric-item p {
+  margin-left: 0;
+}
+
+
+.edit-metric-item label { 
+  display: inline-block;
+  font-size: larger;
+  font-weight: bold;
+  width: 160px;
+}
+
+.edit-metric-item input[type="checkbox"] {
+  margin-right: 50px;
+  height: 15px;
+  width: 15px;
+}
+
+.edit-metric-item input[type="number"] {
+  width: 20%;
+  padding: 12px 20px;
+  border: 2px solid #ccc;
+  box-sizing: border-box;
+  border-radius: 12px;
+  margin: 0 30px 0 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.edit-patient-threshold-container button[type="reset"] {
+  background-color: #a7a7a7;
+  color: white;
+  padding: 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 12px;
+  font-size: x-large;
+  white-space: pre-line;
+  margin: 30px 0 0 80px;
+}
+
+.edit-patient-threshold-container button[type="submit"] {
+  background-color: #ffa51e;
+  color: white;
+  padding: 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 12px;
+  font-size: x-large;
+  white-space: pre-line;
+  margin: 30px 0 0 70px;
+}
+
+.Edit-button {
+  justify-content: center;
+  margin: 0px !important;
+  width: fit-content !important;
+  font-size: large !important;
+}
+
+.high-t {
+  margin-left: 130px;
+}
+
+.threshold-form {
+  width: 50%;
+  align-self: center;
+}
+
+/*          DOCTOR HOME - COMMENTS PAGE         */
+
+.doctor-comments-header {
+  display: flex;
+  width: 1420px;
+  align-items: center;
+  align-self: center;
+  justify-content: space-between;
+  margin: 30px 0;
+}
+
+.doctor-comments-header a {
+  margin-right: 30px;
+}
+
+.doctor-comments-header button {
+  background-color: #0375B4;
+    color: white;
+    padding: 20px 30px;
+    border: none;
+    cursor: pointer;
+    border-radius: 12px;
+    font-size: x-large;
+    white-space: pre-line;
+    width: 100%;
+}
+
+.comments-section {
+  margin: 0 250px;
+}
+
+.comments-section table {
+  border-collapse: collapse;
+  margin-bottom: 200px;
+}
+
+.comments-section th {
+  background-color: #8665f7;
+  color: white;
+  padding: 5px 10px;
+}
+
+.comments-section td {
+  background-color: white;
+  padding: 10px;  
+  border: 1px solid rgb(211, 211, 211);
+}
+
+#home-button-anchor {
+  margin-top: 70px;
+  margin-bottom: 100px;
+  align-self: center;
+}
+
+#home-from-edit-threshold {
+  background-color: #0375B4;
+  color: white;
+  padding: 20px 30px;
+  border: none;
+  cursor: pointer;
+  border-radius: 12px;
+  font-size: xx-large;
+  white-space: pre-line;
+  width: 100%;
+}

@@ -1,0 +1,42 @@
+<div class="about">
+  <h6><a href="/index">Home</a> &nbsp > &nbsp Log in</h6>
+  <h1>Log in</h1>
+</div>
+<form action="/login" method="POST">
+  <div>
+    {{#if error}}
+      <p class="err-msg">Username or password is incorrect. Try again!</p>
+    {{/if}}
+
+    {{#if unauthenticated}}
+      <p class="err-msg">You are not logged in! Please log in first.</p>
+    {{/if}}
+  </div>
+
+  <h1 class ="title-mobile">{{title}}</h1>
+  <div class="parent-login-container">
+    <label>Username: </label>
+    <input
+      type="text"
+      name="username"
+      id="username"
+      placeholder="Enter your email address"
+      required
+    />
+  </div>
+  <div class="parent-login-container">
+    <label>Password: </label>
+    <input
+      type="password"
+      name="password"
+      id="password"
+      placeholder="Enter your password"
+      required
+    />
+  </div>
+
+  <div class="parent-login-container">
+    <button type="submit">Login</button>
+  </div>
+
+</form>

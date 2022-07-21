@@ -1,0 +1,79 @@
+<body>
+  
+  <div class="edit-patient-threshold-container">
+
+    <h1>{{thispatient.first_name}}'s measurements and thresholds</h1>
+    <br>
+    <h3 style="color:red">!!!   Make sure to tick all measurements you want your patient to record !!!</h3>
+   
+    <div class="threshold-form">
+      <h3 class="low-t">LOW threshold</h3>
+      <h3 class="high-t">HIGH threshold</h3>
+
+      <form class="edit-metric-item" action="/edit_individual_threshold/{{thispatient._id}}/blood_glucose" method="POST">
+        <label>Blood glucose:</label>
+        {{#if (isTrue thispatient.requirement.blood_glucose)}}
+          <input type="checkbox" name="blood_glucose_checkbox" value="yes" id="_bg" onclick="toggleMetricInput(this.id)" checked />
+          <input type="number" name="blood_glucose_low" min="0" max="100" step="0.1" placeholder="{{thispatient.thresholds.blood_glucose.min}}" value="{{thispatient.thresholds.blood_glucose.min}}" id="_bg-low"  />
+          <input type="number" name="blood_glucose_high" min="0" max="100" step="0.1" placeholder="{{thispatient.thresholds.blood_glucose.max}}" value="{{thispatient.thresholds.blood_glucose.max}}" id="_bg-high" />
+        {{else}}
+          <input type="checkbox" name="blood_glucose_checkbox" value="no" id="_bg" onclick="toggleMetricInput(this.id)"/>
+          <input type="number" name="blood_glucose_low" min="0" max="100" step="0.1" placeholder="{{thispatient.thresholds.blood_glucose.min}}" value="{{thispatient.thresholds.blood_glucose.min}}" id="_bg-low" disabled />
+          <input type="number" name="blood_glucose_high" min="0" max="100" step="0.1" placeholder="{{thispatient.thresholds.blood_glucose.max}}" value="{{thispatient.thresholds.blood_glucose.max}}" id="_bg-high"disabled />
+        {{/if}}
+        <button type="submit" class="Edit-button">Submit threshold</button>
+        <p>(mmol/L)</p>
+      </form>
+
+      <form class="edit-metric-item" action="/edit_individual_threshold/{{thispatient._id}}/insulin_dosage" method="POST">
+        <label>Insulin dosage:</label>
+        {{#if (isTrue thispatient.requirement.insulin_dosage)}}
+          <input type="checkbox" name="insulin_checkbox" value="yes" id="_id" onclick="toggleMetricInput(this.id)" checked/>
+          <input type="number" name="insulin_dose_low" min="0" max="100" placeholder="{{thispatient.thresholds.insulin_dosage.min}}" value="{{thispatient.thresholds.insulin_dosage.min}}" id="_id-low"  />
+          <input type="number" name="insulin_dose_high" min="0" max="100" placeholder="{{thispatient.thresholds.insulin_dosage.max}}" value="{{thispatient.thresholds.insulin_dosage.max}}" id="_id-high"  />
+        {{else}}
+          <input type="checkbox" name="insulin_checkbox" value="no" id="_id" onclick="toggleMetricInput(this.id)"/>
+          <input type="number" name="insulin_dose_low" min="0" max="100" placeholder="{{thispatient.thresholds.insulin_dosage.min}}" value="{{thispatient.thresholds.insulin_dosage.min}}" id="_id-low" disabled />
+          <input type="number" name="insulin_dose_high" min="0" max="100" placeholder="{{thispatient.thresholds.insulin_dosage.max}}" value="{{thispatient.thresholds.insulin_dosage.max}}"  id="_id-high" disabled />
+        {{/if}}
+        <button type="submit" class="Edit-button">Submit threshold</button>
+        <p>(count)</p> 
+      </form>
+
+      <form class="edit-metric-item" action="/edit_individual_threshold/{{thispatient._id}}/weight" method="POST">
+        <label>Weight:</label>
+        {{#if (isTrue thispatient.requirement.weight)}}
+          <input type="checkbox" name="weight_checkbox" value="yes" id="_weight" onclick="toggleMetricInput(this.id)" checked/>
+          <input type="number" name="weight_low" min="0" max="400" step="0.1" placeholder="{{thispatient.thresholds.weight.min}}" value="{{thispatient.thresholds.weight.min}}" id="_weight-low"  />
+          <input type="number" name="weight_high" min="0" max="400" step="0.1" placeholder="{{thispatient.thresholds.weight.max}}" value="{{thispatient.thresholds.weight.max}}" id="_weight-high"  />
+        {{else}}
+          <input type="checkbox" name="weight_checkbox" value="no" id="_weight" onclick="toggleMetricInput(this.id)"/>
+          <input type="number" name="weight_low" min="0" max="400" step="0.1" placeholder="{{thispatient.thresholds.weight.min}}"  value="{{thispatient.thresholds.weight.min}}" id="_weight-low" disabled />
+          <input type="number" name="weight_high" min="0" max="400" step="0.1" placeholder="{{thispatient.thresholds.weight.max}}" value="{{thispatient.thresholds.weight.max}}" id="_weight-high" disabled />
+        {{/if}}
+        <button type="submit" class="Edit-button">Submit threshold</button>
+        <p>(kg)</p>
+      </form>
+
+      <form class="edit-metric-item" action="/edit_individual_threshold/{{thispatient._id}}/exercise"  method="POST">
+        <label>Exercise:</label>
+        {{#if (isTrue thispatient.requirement.step_count)}}
+          <input type="checkbox" name="exercise_checkbox" value="yes" id="_exercise" onclick="toggleMetricInput(this.id)" checked/>
+          <input type="number" name="exercise_low" min="0" max="100000" placeholder="{{thispatient.thresholds.step_count.min}}"  value="{{thispatient.thresholds.step_count.min}}" id="_exercise-low"  />
+          <input type="number" name="exercise_high" min="0" max="100000" placeholder="{{thispatient.thresholds.step_count.max}}"  value="{{thispatient.thresholds.step_count.max}}" id="_exercise-high"  />
+        {{else}}
+          <input type="checkbox" name="exercise_checkbox" value="no" id="_exercise" onclick="toggleMetricInput(this.id)" />
+          <input type="number" name="exercise_low" min="0" max="100000" placeholder="{{thispatient.thresholds.step_count.min}}"  value="{{thispatient.thresholds.step_count.min}}" id="_exercise-low" disabled />
+          <input type="number" name="exercise_high" min="0" max="100000" placeholder="{{thispatient.thresholds.step_count.max}}" value="{{thispatient.thresholds.step_count.max}}"  id="_exercise-high" disabled />
+        {{/if}}
+        
+        <button type="submit" class="Edit-button">Submit threshold</button>
+        <p>(step count)</p>
+      </form>
+    </div>
+
+    <a id="home-button-anchor" href="/dr_individual_patients/{{thispatient._id}}">
+      <button id="home-from-edit-threshold">Back to {{thispatient.first_name}}'s historical data</button>
+    </a>
+  </div>
+</body>

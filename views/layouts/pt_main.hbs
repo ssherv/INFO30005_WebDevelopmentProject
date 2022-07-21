@@ -1,0 +1,83 @@
+{{! <!DOCTYPE html> }}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Diabetes@Home</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="/css/patient.css" />
+    <link rel="stylesheet" href="/css/title.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300&family=Space+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alata&family=Fredoka:wght@300&family=Palette+Mosaic&family=Roboto:wght@700&family=Rock+Salt&family=Space+Mono&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav class="nav-user">
+      <a href="/patient_home" class="logo"><img src="/images/logo2.png" /></a>
+      <div class="logo-text-user">Diabetes@Home</div>
+      <div class="mobi-menu">
+        <img
+          id="user-icon"
+          src="/images/user_profile.png"
+          onclick="dropContent()"
+          class="hamburger"
+        />
+        <div id="drop-down" class="mobi-menu-btn-content">
+          <a href="/patient_home/preferences">Preferences</a>
+          <a href="/patient_home">Enter data</a>
+          <a href="/patient_home/historical_data">View past data</a>
+          <a onclick="document.getElementById('id01').style.display='block'">Message</a>
+          <a href="/patient_home/leaderboard">Leaderboard</a>
+          <a href="/patient_home/about_websites">About This Website</a>
+          <a href="/patient_home/about_diabetes">About Diabetes</a>
+          <a href="/logout">Log out</a>
+
+          
+        </div>
+      </div>
+
+    </nav>
+    <div class="notification">
+      <div class="medal">
+        {{#if (highEngagement user.active_days user.total_days)}}
+          <a href="/patient_home/leaderboard"><img src="/images/GoldMedal.png" /></a>
+        {{else}}
+          <a href="/patient_home/leaderboard" style="visibility: hidden"><img src="/images/GoldMedal.png" /></a>  
+        {{/if}}
+      </div>
+      <h1>{{{title}}}</h1>
+      <div class="notice">
+        {{#if user.message}}
+          <img id ="message-icon" src="/images/message.png" onclick="document.getElementById('id01').style.display='block'"/>
+          <div id="id01" class="modal">
+          <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close">×</span>
+            <div class="modal-content-message">
+              <h1 class="message-title">Message</h1>
+              <p class="message" >{{doctor_patient_message}} </p>
+            </div> 
+        </div>
+        {{else}}
+          <img id ="message-icon" src="/images/message.png" style="visibility: hidden" onclick="document.getElementById('id01').style.display='block'"/>  
+        {{/if}}
+      </div>
+    </div>
+    <script type="text/javascript" src="/js/behavior.js"></script>
+    <main>
+      {{{body}}}
+    </main>
+
+  </body>
+
+  <div class="footer">
+    <p>Copyright 2022 - Diabetes@Home</p>
+  </div>
+
+</html>

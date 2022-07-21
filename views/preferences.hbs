@@ -1,0 +1,55 @@
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Preferences</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/preferences.css" />
+</head>
+
+<body>
+  {{#if password_updated}}
+      <p class="err-msg">Your password has been updated successfully.</p>
+  {{/if}}
+  <form>
+    <div class="Pref_name_">
+      <div class="firstname">
+      <h3>Given name:</h3>
+      <input type="text" name="Fullname" value={{user.first_name}} readonly/>
+      </div>
+
+      <div class="lasttname">
+      <h3>Last name:</h3>
+      <input type="text" name="Fullname" value={{user.last_name}} readonly/>
+      </div>
+    </div>
+    <div class="Pref_birth">
+      <h3>Birth year:</h3>
+      <input type="text" name="Birthyear" value={{user.birth_year}} readonly/>
+      </div>
+
+    <div class="Pref_username">
+    <h3>Username:</h3>
+    <input type="text" name="Username" value={{user.screen_name}} readonly/>
+    </div>
+
+    <div class="Pref_email">
+    <h3>Email address:</h3>
+    <input type="text" name="Email" value={{user.email}} readonly/>
+    </div>
+
+    <div class="Pref_bio">
+    <h3>Bio:</h3>
+    <span class="text-bio">{{user.bio}}</span>
+    </div>
+
+    </div>
+    
+      <button type="button" id="change_password_button"><a href="/patient_home/preferences/change_password" id='change_password'>Change Password</a></button>
+    
+  </form>
+  <a class="back-to-patient-home" href="/patient_home">
+    <button>Back to home</button>
+  </a>
+  <script type="text/javascript" src="/js/behavior.js"></script>
+</body>

@@ -1,0 +1,266 @@
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://kit.fontawesome.com/55423914b8.js" crossorigin="anonymous"></script>
+  <title>Your Historical Data</title>
+  <link rel="stylesheet" href="/css/patient_past_data.css" />
+</head>
+
+<body>
+  <div class="historical-data-header">
+    <h1>Your Historical Data</h1>
+    <a class="back-to-home" href="/patient_home">
+      <button class="home-from-indiv-pt-btn">Back to home</button>
+    </a>
+    <a class="to-charts" href="/patient_home/historical_data/visualisations">
+      <button type="button" class="view-charts-btn">View charts</button>
+    </a>
+  </div>
+
+  <div class="historical-data-container">
+   
+    <table>
+      <tr>
+          <th>Date</th>
+          <th>Category</th>
+          <th>Value</th>
+          <th class="comment-column"><span>Comment</span></th>
+      </tr>
+      
+      {{#if thispatient.entryNeeded}}
+        {{#if thispatient.requirement.blood_glucose}}
+            <tr>
+            <td>{{thispatient.currdate}}</td>
+            <td>Blood Glucose</td>
+            <td style = "text-align: center;"><i class="fa-solid fa-question"></i></td>
+            <td></td>
+            </tr>
+        {{/if}}
+        {{#if thispatient.requirement.insulin_dosage}}
+            <tr>
+            <td>{{thispatient.currdate}}</td>
+            <td>Insulin Doses</td>
+            <td style = "text-align: center;"><i class="fa-solid fa-question"></i></td>
+            <td></td>
+            </tr>
+        {{/if}}
+        {{#if thispatient.requirement.weight}}
+            <tr>
+            <td>{{thispatient.currdate}}</td>
+            <td>Weight</td>
+            <td style = "text-align: center;"><i class="fa-solid fa-question"></i></td>
+            <td></td>
+            </tr>
+        {{/if}}
+        {{#if thispatient.requirement.step_count}}
+            <tr>
+            <td>{{thispatient.currdate}}</td>
+            <td>Exercise</td>
+            <td style = "text-align: center;"><i class="fa-solid fa-question"></i></td>
+            <td></td>
+            </tr>
+        {{/if}}
+      {{/if}}
+
+      {{#if thispatient.lastEntry}}
+      {{#if thispatient.requirement.blood_glucose}}
+      <tr>
+        {{#if thispatient.blood_glucose.submitted}}
+          <td>{{thispatient.blood_glucose.submit_time}}</td>
+        {{else}}
+          <td>{{thispatient.lastDate}}</td>
+        {{/if}}
+        <td>Blood Glucose</td>
+        {{#if thispatient.blood_glucose.submitted}}
+          <td style="text-align: center">{{thispatient.blood_glucose.metric}}mmol/L</td>
+        {{else}}
+          <td style="text-align: center;"><i class="fa-solid fa-question"></i></td>
+        {{/if}}
+        {{#if thispatient.blood_glucose.comment}}
+          <td class="comment-column">
+            <div class="icon_box"><i class="fa-solid fa-envelope"></i>
+            <span class = "comment"  style="display: inline-block;">{{thispatient.blood_glucose.comment}}</span></div>
+            <span>{{thispatient.blood_glucose.comment}}</span></td>
+        {{else}}
+          <td></td>
+        {{/if}}
+      </tr>
+      {{/if}}
+
+      {{#if thispatient.requirement.insulin_dosage}}
+      <tr>
+        {{#if thispatient.insulin_dosage.submitted}}
+          <td>{{thispatient.insulin_dosage.submit_time}}</td>
+        {{else}}
+          <td>{{thispatient.lastDate}}</td>
+        {{/if}}
+        <td>Insulin Doses</td>
+        {{#if thispatient.insulin_dosage.submitted}}
+          <td style="text-align: center">{{thispatient.insulin_dosage.metric}} doses</td>
+        {{else}}
+          <td style="text-align: center"><i class="fa-solid fa-question"></i></td>
+        {{/if}}
+        {{#if thispatient.insulin_dosage.comment}}
+          <td class="comment-column">
+            <div class="icon_box"><i class="fa-solid fa-envelope"></i>
+            <span class = "comment"  style="display: inline-block;">{{thispatient.insulin_dosage.comment}}</span></div>
+            <span>{{thispatient.insulin_dosage.comment}}</span></td>
+        {{else}}
+          <td></td>
+        {{/if}}
+      </tr>
+      {{/if}}
+
+      {{#if thispatient.requirement.weight}}
+      <tr>
+        {{#if thispatient.weight.submitted}}
+          <td>{{thispatient.weight.submit_time}}</td>
+        {{else}}
+          <td>{{thispatient.lastDate}}</td>
+        {{/if}}
+        <td>Weight</td>
+        {{#if thispatient.weight.submitted}}
+          <td style="text-align: center">{{thispatient.weight.metric}} kg</td>
+        {{else}}
+          <td style="text-align: center"><i class="fa-solid fa-question"></i></td>
+        {{/if}}
+        {{#if thispatient.weight.comment}}
+          <td class="comment-column">
+            <div class="icon_box"><i class="fa-solid fa-envelope"></i>
+            <span class = "comment"  style="display: inline-block;">{{thispatient.weight.comment}}</span></div>
+            <span>{{thispatient.weight.comment}}</span></td>
+        {{else}}
+          <td></td>
+        {{/if}}
+      </tr>
+      {{/if}}
+
+      {{#if thispatient.requirement.step_count}}
+      <tr>
+        {{#if thispatient.step_count.submitted}}
+          <td>{{thispatient.step_count.submit_time}}</td>
+        {{else}}
+          <td>{{thispatient.lastDate}}</td>
+        {{/if}}
+        <td>Exercise</td>
+        {{#if thispatient.step_count.submitted}}
+          <td style="text-align: center">{{thispatient.step_count.metric}} steps</td>
+        {{else}}
+          <td style="text-align: center"><i class="fa-solid fa-question"></i></td>
+        {{/if}}
+        {{#if thispatient.step_count.comment}}
+          <td class="comment-column">
+            <div class="icon_box"><i class="fa-solid fa-envelope"></i>
+            <span class = "comment"  style="display: inline-block;">{{thispatient.step_count.comment}}</span></div>
+            <span>{{thispatient.step_count.comment}}</span></td>
+        {{else}}
+          <td></td>
+        {{/if}}
+      </tr>
+      {{/if}}
+      {{/if}}
+      
+
+      {{#each health_stats}}
+      {{#if this.patientId.requirement.blood_glucose}}
+      <tr>
+        {{#if this.blood_glucose.submitted}}
+          <td>{{this.blood_glucose.submit_time}}</td>
+        {{else}}
+          <td>{{this.date}}</td>
+        {{/if}}
+        <td>Blood Glucose</td>
+        {{#if this.blood_glucose.submitted}}
+          <td style="text-align: center">{{this.blood_glucose.metric}}mmol/L</td>
+        {{else}}
+          <td style="text-align: center"><i class="fa-solid fa-question"></i></td>
+        {{/if}}
+        {{#if this.blood_glucose.comment}}
+          <td class="comment-column">
+            <div class="icon_box"><i class="fa-solid fa-envelope"></i>
+            <span class = "comment"  style="display: inline-block;">{{this.blood_glucose.comment}}</span></div>
+            <span>{{this.blood_glucose.comment}}</span></td>
+        {{else}}
+          <td></td>
+        {{/if}}
+      </tr>
+      {{/if}}
+
+      {{#if this.patientId.requirement.insulin_dosage}}
+      <tr>
+        {{#if this.insulin_dosage.submitted}}
+          <td>{{this.insulin_dosage.submit_time}}</td>
+        {{else}}
+          <td>{{this.date}}</td>
+        {{/if}}
+        <td>Insulin Doses</td>
+        {{#if this.insulin_dosage.submitted}}
+          <td style="text-align: center">{{this.insulin_dosage.metric}} doses</td>
+        {{else}}
+          <td style = "text-align: center;"><i class="fa-solid fa-question"></i></td>
+        {{/if}}
+        {{#if this.insulin_dosage.comment}}
+          <td class="comment-column">
+            <div class="icon_box"><i class="fa-solid fa-envelope"></i>
+            <span class = "comment"  style="display: inline-block;">{{this.insulin_dosage.comment}}</span></div>
+            <span>{{this.insulin_dosage.comment}}</span></td>
+        {{else}}
+          <td></td>
+        {{/if}}
+      </tr>
+      {{/if}}
+
+      {{#if this.patientId.requirement.weight}}
+      <tr>
+        {{#if this.weight.submitted}}
+          <td>{{this.weight.submit_time}}</td>
+        {{else}}
+          <td>{{this.date}}</td>
+        {{/if}}
+        <td>Weight</td>
+        {{#if this.weight.submitted}}
+          <td style="text-align: center">{{this.weight.metric}} kg</td>
+        {{else}}
+          <td style = "text-align: center;"><i class="fa-solid fa-question"></i></td>
+        {{/if}}
+        {{#if this.weight.comment}}
+          <td class="comment-column">
+            <div class="icon_box"><i class="fa-solid fa-envelope"></i>
+            <span class = "comment"  style="display: inline-block;">{{this.weight.comment}}</span></div>
+            <span>{{this.weight.comment}}</span></td>
+        {{else}}
+          <td></td>
+        {{/if}}
+      </tr>
+      {{/if}}
+      {{#if this.patientId.requirement.step_count}}
+      <tr>
+        {{#if this.step_count.submitted}}
+          <td>{{this.step_count.submit_time}}</td>
+        {{else}}
+          <td>{{this.date}}</td>
+        {{/if}}
+        <td>Exercise</td>
+        {{#if this.step_count.submitted}}
+          <td style="text-align: center">{{this.step_count.metric}} steps</td>
+        {{else}}
+          <td style = "text-align: center;"><i class="fa-solid fa-question"></i></td>
+        {{/if}}
+        {{#if this.step_count.comment}}
+          <td class="comment-column">
+            <div class="icon_box"><i class="fa-solid fa-envelope"></i>
+            <span class = "comment"  style="display: inline-block;">{{this.step_count.comment}}</span></div>
+            <span>{{this.step_count.comment}}</span></td>
+        {{else}}
+          <td></td>
+        {{/if}}
+      </tr>
+      {{/if}}
+
+      {{/each}}
+  
+    </table>
+
+  </div>
+</body>

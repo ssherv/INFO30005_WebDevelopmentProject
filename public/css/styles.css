@@ -1,0 +1,457 @@
+/* ============ GENERAL ============ */
+* {
+  margin: 0;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: "Fredoka", sans-serif;
+}
+
+main{
+  flex-basis: 100%;
+  display:flex;
+  flex-direction: column;
+}
+
+.err-msg {
+  padding: 10px 15px;
+  background-color: #fff;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  color: red;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* ============ NAVIGATION BAR ============ */
+nav {
+  /* background: darkcyan; */
+  /* background: rgb(0, 26, 255); */
+  background-image: url("../images/background.png");
+  background-size: 1920px;
+  height: 80px;
+  width: 100%;
+  display: flex;
+}
+
+/* Logo & Logo text */
+
+.logo {
+  flex-basis: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo img {
+  position: absolute;
+  width: 50px;
+}
+
+.bar {
+  display: block;
+  width: 26px;
+  height: 4px;
+  margin: 4px auto;
+  background-color: rgb(0, 26, 255);
+}
+
+/* logo text for static pages */
+.logo-text {
+  flex-basis: 30%;
+  color: white;
+  font-family: "Rock Salt", cursive;
+  font-weight: 900;
+  font-size: 1.7rem;
+  line-height: 80px;
+  text-align: left;
+}
+
+nav.nav-user {
+  background-image: url("../images/background.png");
+  height: 80px;
+  width: 100%;
+  display: flex;
+}
+
+/* Desktop menu */
+.web-menu {
+  flex-basis: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  margin-right: 2%;
+}
+
+.web-menu a {
+  color: white;
+  margin: 0 10px;
+}
+
+a.active,
+a:hover {
+  background: lightblue;
+  color: black;
+  transition: 0.5s;
+}
+
+/* logo text after used after log in */
+.logo-text-user {
+  flex-basis: 70%;
+  color: white;
+  font-family: "Rock Salt", cursive;
+  font-weight: 900;
+  font-size: 1.7rem;
+  line-height: 80px;
+  text-align: left;
+}
+
+h1 {
+  text-align: center;
+  line-height: 100px;
+}
+
+p {
+  text-align: justify;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+/* Boxes of content in 2 static pages (about_website & about_diabetes)*/
+.static-content-container {
+  display: flex;
+  flex-wrap:wrap;
+  justify-content: center;
+}
+
+.static-content-container div {
+  flex-grow: 0;
+  border: 1px grey solid;
+  border-top: 4px rgb(0, 81, 255) solid;
+  text-align: center;
+  width: 373px;
+  /* height: 277px; */
+  margin: 0 20px 20px 20px;
+}
+
+.static-content-container div > * {
+  padding: 10px;
+  margin: 10px;
+  flex: 1 100%;
+  border-radius: 10px;
+}
+
+.static-content-container ul {
+  margin: -20px;
+  text-align: left;
+  margin-left: 12%;
+}
+
+.video-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 0 5% 5% 5%;
+}
+
+/* Show the path only on mobile screen */
+.about {
+  display: none;
+}
+
+.page-title-description h1{
+  text-align: center;
+}
+
+.page-title-description {
+  display: flex;
+  flex-flow: column;
+  flex-basis: 60%;
+}
+
+
+.context-container {
+  flex-basis: 50%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.context-container p{
+  text-align: center;
+}
+
+/* Configuration for mobile version of menu */
+.hamburger {
+  cursor: pointer;
+  /* padding-top: 40%; */
+  max-height: 24px;
+}
+
+.mobi-menu {
+  /* position: relative;
+  display: inline-block; */
+  display: flex;
+  padding: 15px;
+  flex-basis: 20%;
+  justify-content: flex-end;
+}
+
+#dr_menu{
+  justify-content: flex-end;
+  /* justify-content: space-around; */
+}
+
+.mobi-menu-btn-content {
+  display: none;
+  position: absolute;
+  border: 3px solid rgb(0, 26, 255);
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  min-width: 8px;
+  max-width: 180px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  top: 60px;
+  right: 5px;
+}
+
+.mobi-menu-btn-content a {
+  color: #000000;
+  font-size: 14px;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  border-radius: 10px;
+}
+
+/* .mobi-menu a:hover {background-color: #ddd;} */
+
+/* Macro for showing the dropdown */
+.show {
+  display: flex;
+  flex-flow: column;
+}
+
+#user-icon{
+  min-height: 100%; 
+  width: auto;
+}
+
+#chat-icon{
+  min-height: 100%; 
+  width: auto;
+}
+
+#mobi-menu-main {
+  display: none;
+}
+
+
+
+
+/* Footer at the end of each page*/
+.footer {
+  /* position: fixed; */
+  /* left: 0; */
+  /* bottom: 0; */
+  height: 35px;
+  width: 100%;
+  background-color: #0375B4;
+  color: white;
+  text-align: center;
+}
+
+.footer p {
+  font-size: 15px;
+  line-height: 35px;
+}
+
+/* Ipad */
+/* @media only screen and (max-width: 1030px) {
+  .web-menu {
+    display: none;
+  }
+  remove this
+  nav ul {
+    display: none;
+  }
+  .logo-text {
+    padding: none;
+    margin-left: 0;
+    text-align: center;
+  }
+  .logo img {
+    display: block;
+    margin-top: none;
+    margin: none;
+  }
+} */
+
+/* max-width: 550px */
+@media screen and (max-width: 376px) {
+  .pt-data{
+    min-width: 100%;
+    max-width: 100%
+  }
+
+  .about {
+    display: none;
+    background: url("../images/background.png");
+    color: white;
+    height: 120px;
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+  }
+
+  .about h1 {
+    text-align: left;
+    vertical-align: bottom;
+  }
+  
+  .about a{
+    color: #fff;
+  }
+  
+  .web-menu {
+    display: none;
+  }
+
+  .logo-text {
+    color: rgb(0, 26, 255);
+    font-family: "Rock Salt", cursive;
+    font-weight: 900;
+    font-size: 20px;
+    margin-left: 30px;
+    flex-basis: 70%;
+  }
+
+  .logo-text-user {
+    color: white;
+    font-family: "Rock Salt", cursive;
+    font-weight: 900;
+    font-size: 20px;
+    margin-left: 30px;
+    flex-basis: 70%;
+  }
+
+
+  .logo {
+    flex-basis: 10%;
+  }
+  .logo img {
+    margin-left: 20px;
+  }
+
+  #login {
+    display: none;
+  }
+
+  nav {
+    background: white;
+    height: 80px;
+    width: 100%;
+  }
+  .static-content-container{
+
+    flex-direction: column;
+  }
+  .static-content-container div{
+    width: 90%;
+  }
+
+  h1 {
+    font-size: 20px !important;
+    text-align: left;
+    padding-left: 5%;
+    white-space: nowrap;
+  }
+
+  h6 {
+    font-size: 13px;
+    text-align: left;
+    padding-left: 5%;
+    padding-top: 5%;
+  }
+
+  p {
+    font-size: 15px;
+  }
+
+  .bar {
+    display: block;
+    width: 26px;
+    height: 4px;
+    margin: 4px auto;
+    background-color: rgb(0, 26, 255);
+  }
+
+  /* .mobi-menu {
+    display: flex;
+
+    float: right;
+
+    padding: 15px;
+    flex-basis: 20%;
+    justify-content: right;
+    align-items: flex-end;
+  } */
+
+  .hamburger {
+    cursor: pointer;
+    /* padding-top: 40%; */
+    max-height: 24px;
+  }
+ 
+  .mobi-menu {
+    /* position: relative;
+    display: inline-block; */
+    display: flex;
+    padding: 15px;
+    flex-basis: 20%;
+    justify-content: center;
+    align-items: center
+  }
+  
+  .mobi-menu-btn-content {
+    display: none;
+    position: absolute;
+    border: 3px solid rgb(0, 26, 255);
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    min-width: 8px;
+    max-width: 180px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    top: 60px;
+    right: 5px;
+  }
+  
+  .mobi-menu-btn-content a {
+    color: #000000;
+    font-size: 14px;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    border-radius: 10px;
+  }
+  
+  /* .mobi-menu a:hover {background-color: #ddd;} */
+  
+  .show {
+    display: flex;
+    flex-flow: column;
+  }
+
+  /* Patient profile button */
+  #user-icon{
+    min-height: 100%; 
+    width: auto;
+  }
+
+  #mobi-menu-main {
+    display: flex;
+  }
+}

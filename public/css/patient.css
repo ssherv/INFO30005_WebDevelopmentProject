@@ -1,0 +1,357 @@
+/*     Medal and Message notifications     */
+
+.notification {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 0;
+}
+
+
+.medal {
+    display: flex;
+    flex-basis: 5%;
+    object-position: center top;
+}
+
+.medal img {
+    width: 85px;
+    height: 85px;
+    object-fit: contain;
+    object-position: top;
+    top: 73.5px;
+}
+
+.notice {
+    display: flex;
+    flex-basis: 5%;
+    object-position: center;
+    padding-right: 2.5%;
+    cursor: pointer;
+}
+
+#message-icon {
+    width: 55px;
+    object-fit: contain;
+    object-position: center;
+    top: 73.5px;
+    right: 400px;
+    cursor: pointer;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: #474e5d;
+    padding-top: 50px;
+    cursor: pointer;
+  }
+  
+  .modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    height: fit-content;
+    border-radius: 15px;
+    border-color: #ffa51e;
+    border-width: 3px;
+    padding: 1%;
+    cursor: pointer;
+  }
+
+  .modal-content-message {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    height: fit-content;
+    border-radius: 15px;
+    min-height: 50%;
+    border-color: #ffa51e;
+    border-width: 3px;
+    padding: 1%;
+  }
+
+  .modal-password {
+    margin: 5% auto 15% auto; 
+    border: 1px solid #888;
+    width: 80%;
+    height: 40%;
+    border-radius: 15px;
+    border-color: #ffa51e;
+    border-width: 3px;
+    padding: 1%;
+    align-items: center;
+  }
+  
+  .close {
+    display: table;
+    font-size: 40px;
+    font-weight: bold;
+    color: #f1f1f1;
+    margin: 0 auto;
+    cursor: pointer;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #f44336;
+    cursor: pointer;
+  }
+
+  .message {
+      text-align: center;
+      margin-left: 0;
+  }
+
+  .message-title {
+      color: black;
+      text-align: center;
+  }
+
+  
+/*     Main page content - forms and buttons     */
+
+.pt-page-intro {
+    text-align: center;
+    padding: 0 3%;
+}
+
+.pt-data-entry-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.form-header {
+    background-color: #8665f7;
+    box-sizing: border-box;
+    border-radius: 12px;
+    color: white;
+    display: flex;
+    padding: 12px 50px 12px 20px;
+    margin-bottom: 5px;
+}
+
+.pt-data-entry-item {
+    margin: 3% 0;
+    flex-basis: 35%;
+}
+
+.submitted-notification {
+    background-color: #f3f3f3;
+    margin-top: 10px;
+    padding: 10px;  
+    box-sizing: border-box;
+    border-radius: 15px;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.offset {
+    margin-left: 5%;
+    font-size: medium;
+}
+
+.flex-span {
+    display: flex;
+    align-items: center;
+}
+
+.green-tick {
+    height: 5%;
+    width: 5%;
+}
+
+input[type=number], textarea {
+    width: 100%;
+    padding: 12px 50px 12px 20px;
+    margin: 5px 0;
+    border: 2px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 12px;
+    resize: none;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+button[type=reset] {
+    background-color: #a7a7a7;
+    color: white;
+    padding: 10px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    border-radius: 12px;
+    font-size: large;
+    white-space: pre-line;
+    width: 22%;
+    margin-right: 3%;
+}
+
+button[type=submit] {
+    background-color: #ffa51e;
+    color: white;
+    padding: 10px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    border-radius: 12px;
+    font-size: large;
+    white-space: pre-line;
+    width: 75%;
+}
+
+#anchor-past-data {
+    display: block;
+    width: 40%;
+}
+
+.div-button-history{
+    flex-basis:100%;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    padding-bottom: 40px;
+}
+
+#historical-data-btn {
+    background-color: #0375B4;
+    color: white;
+    font-size: x-large;
+    width: 100%; 
+    border: none;
+    cursor: pointer;
+    border-radius: 12px;
+    line-height: 30px;
+    padding: 15px 0;
+}
+
+.left-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 100px 375px 0 375px;
+    justify-content: space-between;
+  }
+
+  .view-charts-btn {
+    background-color: #0375B4;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: large;
+    cursor: pointer;
+    width: 140px;
+    height: 70px;
+  }
+
+  .home-from-indiv-pt-btn {
+    background-color: #949697;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: large;
+    cursor: pointer;
+    width: 140px;
+    height: 70px;
+  }
+
+
+/*     Design for TABLET screens     */
+
+@media only screen and (max-width: 1025px) { 
+    
+    .pt-data-entry-item {
+        flex-basis: 40%;
+    }
+
+    .medal img, .notice img {
+        width: 65px;
+        height: 65px;
+    }  
+
+    .green-tick {
+        height: 7%;
+        width: 7%;
+    }
+    
+    #anchor-past-data {
+        margin-bottom: 40px;
+        
+    }
+}
+
+
+
+
+
+/*     Design for MOBILE screens    */
+
+@media only screen and (max-width: 376px) {
+    h1, h3 {
+        text-align: center;
+    }
+
+    .pt-data-entry-item {
+        flex-basis: 100%;
+        margin: 4% 3% 8% 3%;
+    }
+
+    .medal img, .notice img {
+        width: 55px;
+        height: 85px;
+    }
+    
+    #anchor-past-data {
+        width: 95%;
+    }
+
+    #historical-data-btn {
+        font-size: larger;
+        line-height: 25px;
+        padding: 15px 0;
+    }
+
+    .green-tick {
+        height: 7%;
+        width: 7%;
+    }
+
+    .modal-content {
+        height: fit-content;
+        min-height: 70%;
+    }
+
+    .about {
+        display: none;
+    }
+
+    .title-mobile {
+        display: none !important;
+    }
+}
+
+
+
+
+
+
+
+
+
+ 
+  
+
+  
+  
+  

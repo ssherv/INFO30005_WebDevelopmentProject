@@ -1,0 +1,43 @@
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leaderboard</title>
+  <link rel="stylesheet" href="/css/leaderboard.css" />
+  <link rel="stylesheet" href="/css/patient.css" />
+</head>
+
+<body>
+
+<div class="leaderboard-intro">
+  <h3>Your engagement rate is <span class="blue-emphasis">{{findEngagement user.active_days user.total_days}}%</span></h3>
+  <h3>You are rank {{ranking patients user}}!</h3>
+  <br>
+  <p>Keep up the great work!</p>
+  <p>Remember to enter your data every day to increase your engagement rate and place on the leaderboard.</p>
+  {{patient_name}}
+</div>
+
+<div id="leaderboard">
+  
+  <img src="/images/fireworks.png" alt="fireworks" class="firework-img">
+
+  <table class="leaderboard-table">
+    {{#each (limit patients 5)}}
+      <tr>
+        <td><img src="/images/{{@index}}-place.png"></td>
+        <td><h2>{{this.screen_name}}</h2></td>
+        <td><h2 class="blue-emphasis">{{findEngagement this.active_days this.total_days}}%</h2></td>
+      </tr>
+    {{/each}}
+  </table>
+
+  <img src="/images/fireworks.png" alt="fireworks" class="firework-img">
+
+</div>
+
+<a class="back-to-home" href="/patient_home">
+  <button>Back to home</button>
+</a>
+
+</body>

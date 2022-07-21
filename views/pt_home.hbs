@@ -1,0 +1,230 @@
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/patient.css" />
+</head>
+
+<body>
+  <div>
+    {{#if restricted_action}}
+      <p class="err-msg">Action outside authorised pages.</p>
+    {{/if}}
+  </div>
+
+  <div class="pt-page-intro">
+    <h2>Hi, {{patient_name}}!</h1><br> 
+    {{#if (isTrue all_data_submitted)}}
+      <h3>You've entered all the required data for today. Keep it up!</h3>
+      <br />
+    {{else}}
+      <h3>Remember to enter your data today.</h3>
+      <h3>Add a comment if you want to bring something to your Doctor's attention.</h3>
+      <br />
+    {{/if}}
+  </div>
+
+
+  <div class="pt-data-entry-container">
+
+    <!-- Form for patients to input BLOOD GLUCOSE data -->
+    {{#if (isTrue blood_glucose_required)}}
+    <div id="blood-glucose-box" class="pt-data-entry-item">
+      
+      <!-- If patient has previously entered data - show them what they entered -->
+      {{#if (isTrue blood_glucose_submitted)}}
+        <form>
+          <label for="blood-glucose" class="bold form-header">Blood glucose (mmol/L)</label>
+        </form>
+        <div class="submitted-notification">
+          <p class="bold">Today's blood glucose level: <span class="offset">{{blood_glucose_metric}} mmol/L</span></p>
+          <br>
+          <p>{{blood_glucose_cmt}}</p>
+          <br>
+          <span class="flex-span">
+            <img src="/images/accept.png" alt="green tick" class="green-tick" />
+            <p class="bold">Data submitted: {{blood_glucose_date}}</p>
+          </span>
+        </div>
+      
+      <!-- If patient has not submitted data - let them enter a measurement -->
+      {{else}}
+        <form action="/patient_home" method="POST">
+          <label for="blood-glucose" class="bold form-header">Blood glucose (mmol/L)</label>
+          <input
+            type="number"
+            name="blood_glucose_metric"
+            min="0"
+            max="100"
+            step="0.1"
+            placeholder="Enter data here..."
+            required
+          />
+          <textarea
+            name="blood_glucose_cmt"
+            maxlength="200"
+            placeholder="Enter any optional comments here..."
+          ></textarea>
+          <span class="flex-span">
+            <button type="reset" class="reset-btn">Reset</button>
+            <button type="submit" class="submit-btn">Submit</button>
+          </span>
+        </form>
+      {{/if}}
+    </div>
+    {{/if}}
+
+
+
+    <!-- Form for patients to input INSULIN DOSAGE data -->
+    {{#if (isTrue insulin_dosage_required)}}
+    <div id="insulin-dose-box" class="pt-data-entry-item">
+
+      <!-- If patient has previously entered data - show them what they entered -->    
+      {{#if (isTrue insulin_dosage_submitted)}}
+        <form>
+          <label for="insulin-dosage" class="bold form-header">Doses of insulin (count)</label>
+        </form>
+        <div class="submitted-notification">
+          <p class="bold">Today's insulin dosage: <span class="offset">{{insulin_dosage_metric}} doses</span></p>
+          <br>
+          <p>{{insulin_dosage_cmt}}</p>
+          <br>
+          <span class="flex-span">
+            <img src="/images/accept.png" alt="green tick" class="green-tick" />
+            <p class="bold">Data submitted: {{insulin_dosage_date}}</p>
+          </span>
+        </div>
+
+      <!-- If patient has not submitted data - let them enter a measurement -->    
+      {{else}}
+        <form action="/patient_home" method="POST">
+          <label for="insulin-dosage" class="bold form-header">Doses of insulin (count)</label>
+          <input
+            type="number"
+            name="insulin_dosage_metric"
+            min="0"
+            max="100"
+            placeholder="Enter data here..."
+            required
+          />
+          <textarea
+            name="insulin_dosage_cmt"
+            maxlength="200"
+            placeholder="Enter any optional comments here..."
+          ></textarea>
+          <span class="flex-span">
+            <button type="reset" class="reset-btn">Reset</button>
+            <button type="submit" class="submit-btn">Submit</button>
+          </span>
+        </form>
+      {{/if}}
+    </div>
+    {{/if}}
+
+
+
+    <!-- Form for patients to input WEIGHT data -->
+    {{#if (isTrue weight_required)}}
+    <div id="weight-box" class="pt-data-entry-item">
+
+      <!-- If patient has previously entered data - show them what they entered -->     
+      {{#if (isTrue weight_submitted)}}
+        <form>
+          <label for="weight" class="bold form-header">Weight (kg)</label>
+        </form>
+        <div class="submitted-notification">
+          <p class="bold">Today's weight: <span class="offset">{{weight_metric}} kg</span></p>
+          <br>
+          <p>{{weight_cmt}}</p>
+          <br>
+          <span class="flex-span">
+            <img src="/images/accept.png" alt="green tick" class="green-tick" />
+            <p class="bold">Data submitted: {{weight_date}}</p>
+          </span>
+        </div>
+
+      <!-- If patient has not submitted data - let them enter a measurement -->    
+      {{else}}
+        <form action="/patient_home" method="POST">
+          <label for="weight" class="bold form-header">Weight (kg)</label>
+          <input
+            type="number"
+            name="weight_metric"
+            min="0"
+            max="400"
+            step="0.1"
+            placeholder="Enter data here..."
+            required
+          />
+          <textarea
+            name="weight_cmt"
+            maxlength="200"
+            placeholder="Enter any optional comments here..."
+          ></textarea>
+          <span class="flex-span">
+            <button type="reset" class="reset-btn">Reset</button>
+            <button type="submit" class="submit-btn">Submit</button>
+          </span>
+        </form>
+      {{/if}}
+    </div>
+    {{/if}}
+
+
+
+    <!-- Form for patients to input EXERCISE data -->
+    {{#if (isTrue step_count_required)}}
+    <div id="exercise-box" class="pt-data-entry-item">
+
+      <!-- If patient has previously entered data - show them what they entered -->
+      {{#if (isTrue step_count_submitted)}}
+        <form>
+          <label for="exercise" class="bold form-header">Exercise (step count)</label>
+        </form>
+        <div class="submitted-notification">
+          <p class="bold">Today's step count: <span class="offset">{{step_count_metric}} steps</span></p>
+          <br>
+          <p>{{step_count_cmt}}</p>
+          <br>
+          <span class="flex-span">
+            <img src="/images/accept.png" alt="green tick" class="green-tick" />
+            <p class="bold">Data submitted: {{step_count_date}}</p>
+          </span>
+        </div>
+
+      <!-- If patient has not submitted data - let them enter a measurement --> 
+      {{else}}
+        <form action="/patient_home" method="POST">
+          <label for="exercise" class="bold form-header">Exercise (step count)</label>
+          <input
+            type="number"
+            name="step_count_metric"
+            min="0"
+            max="100000"
+            placeholder="Enter data here..."
+            required
+          />
+          <textarea
+            name="step_count_cmt"
+            maxlength="200"
+            placeholder="Enter any optional comments here..."
+          ></textarea>
+          <span class="flex-span">
+            <button type="reset" class="reset-btn">Reset</button>
+            <button type="submit" class="submit-btn">Submit</button>
+          </span>
+        </form>
+      {{/if}}
+    </div>
+    {{/if}}
+  </div>
+
+    <div class="div-button-history">
+    <a href="/patient_home/historical_data" id='anchor-past-data'>
+      <button type="button" id="historical-data-btn">Click to view your<br/>historical data</button>
+    </a>
+    </div>
+
+</body>

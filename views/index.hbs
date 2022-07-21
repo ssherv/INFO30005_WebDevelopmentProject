@@ -1,0 +1,47 @@
+<div class="about">
+  <h6><a href="/index">Home &nbsp > &nbsp</a></h6>
+  <h1>Home</h1>
+</div>
+<div>
+  {{#if error}}
+    <p class="err-msg">Username or password is incorrect. Try again!</p>
+  {{/if}}
+</div>
+<div class="page_division">
+  <div class="page-title-description">
+    <div class="context-container">
+      <h1 class ="title-mobile">{{title}}</h1>
+      <p>Diabetes@Home makes it easy to manage and keep track of your health.</p>
+      <br />
+      <p>Consult your doctor to join this website.</p>
+    </div>
+  </div>
+  <div class="page_context">
+    <h1>Log in</h1>
+    <form action="/login" method="post">
+      <div class="parent-login-container">
+        <label>Username: </label>
+          <input
+          type="text"
+          name="username"
+          id="username"
+          placeholder="Enter your email address"
+          required
+          />
+      </div>
+        <div class="parent-login-container">
+          <label>Password: </label>
+          <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="Enter your password"
+          required
+          />
+        </div>
+        <div class="parent-login-container">
+          <button type="submit">Login</button>
+        </div>
+    </form>
+  </div>
+</div>

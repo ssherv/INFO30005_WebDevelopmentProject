@@ -1,0 +1,46 @@
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Preferences</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/preferences.css" />
+</head>
+
+<body>
+  <form id="doctor_preferences_form">
+    <div class="Pref_name_birth">
+      <div class="Pref_fullname">
+      <h3>Given name:</h3>
+      <input type="text" name="Givenname" value="{{doctor.first_name}}" readonly/>
+      <h3>Family name:</h3>
+      <input type="text" name="Familyname" value="{{doctor.last_name}}" readonly/>  
+      </div>
+
+      <div class="Pref_birth">
+      <h3>Birth year:</h3>
+      <input type="text" name="Birthyear" value="{{doctor.birth_year}}" readonly/>
+      </div>
+    </div>
+
+    <div class="Pref_username">
+    <h3>Username:</h3>
+    <input type="text" name="Username" value="{{doctor.screen_name}}" readonly/>
+    </div>
+
+    <div class="Pref_email">
+    <h3>Email address:</h3>
+    <input type="text" name="Email" value="{{doctor.email}}" readonly/>
+    </div>
+
+    <div class="Pref_password">
+    <button type="button"><a href="/dr_home/preferences/change_password">Change password</a></button> 
+    </div>
+  </form>
+  <script type="text/javascript" src="/js/behavior.js"></script>
+
+  <a id="home-button-anchor" href="/dr_home">
+      <button id="home-from-edit-threshold">Back to dashboard</button>
+  </a>
+
+</body>

@@ -1,0 +1,178 @@
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chart Visualisations</title>
+  <link rel="stylesheet" href="/css/charts.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+  <div class="charts-container">
+
+    <div class="left-container">
+      <h1>Chart Visualisation</h1>
+
+      <input type = "hidden" id = "weight_stats" value = {{weight_stats}} />
+      <input type = "hidden" id = "blood_glucose_stats" value = {{blood_glucose_stats}} />
+      <input type = "hidden" id = "insulin_dosage_stats" value = {{insulin_dosage_stats}} />
+      <input type = "hidden" id = "step_count_stats" value = {{step_count_stats}} />
+
+      <div class="input-metrics-container">
+        <h3>Select metrics to visualise:</h3>
+      
+        {{#if thispatient.requirement.blood_glucose}}
+        <div class="metric-item">
+          <input type="radio" name="chart_selection" value="blood_glucose" id="blood_glucose"/>  
+          <label for="blood_glucose">Blood glucose</label>
+        </div>
+        {{/if}}
+
+        
+        {{#if thispatient.requirement.insulin_dosage}}
+        <div class="metric-item">
+          <input type="radio" name="chart_selection" value="insulin_dosage" id="insulin_dosage"/>
+          <label for="insulin_dosage">Insulin dosage</label>
+        </div>
+        {{/if}}
+
+        {{#if thispatient.requirement.weight}}
+        <div class="metric-item">
+          <input type="radio" name="chart_selection" value="weight" id="weight"/>
+          <label for="weight">Weight</label>
+        </div>
+        {{/if}}
+
+        {{#if thispatient.requirement.step_count}}
+        <div class="metric-item">
+          <input type="radio" name="chart_selection" value="exercise" id="exercise" />
+          <label for="exercise">Exercise</label>
+        </div>
+        {{/if}}
+
+        <button id="generate-chart-btn">Generate Chart</button>
+      </div>
+
+
+      <h4 style="color:red">Note that today's data is not included on this chart. Historical data is refreshed at the end of each day.</h4>
+
+    </div>
+
+    <div class="right-container">
+      <canvas id="myChart"></canvas>
+    </div>
+  </div>
+
+  <a id="hist-from-chart" href="/patient_home/historical_data">
+      <button type="button" id="home-from-chart-btn">Back to your historical data</button>
+  </a>
+
+  <script>
+
+
+    // Setup
+    const data = {
+        labels: {{{dates}}},
+        datasets: [{
+            // Dataset is made available via radio buttons
+        }]
+    };
+
+    // config
+    const config = {
+        type: 'line',
+        data: data,
+        options: {
+            
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: false
+                },
+                title: {
+                    display: false,
+                    font: {
+                        size: 22
+                    }
+                }
+            }
+
+        }
+    };
+
+    // render /init
+    const myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+    );
+
+
+    const btn = document.querySelector('#generate-chart-btn');
+    const radioButtons = document.querySelectorAll('input[name="chart_selection"]')
+    btn.addEventListener("click", () => {
+        let selectedStat;
+        for (const radioButton of radioButtons) {
+            if (radioButton.checked) {
+                selectedStat = radioButton.value;
+                break;
+            }
+        }
+
+        let stats;
+        let chartTitle;
+        let chartBackgroundColor;
+        let chartBorderColor;
+
+        let blood_glucose_stats = document.getElementById("blood_glucose_stats").value
+        let insulin_dosage_stats = document.getElementById("insulin_dosage_stats").value
+        let weight_stats = document.getElementById("weight_stats").value
+        let step_count_stats = document.getElementById("step_count_stats").value
+
+        const blood_glucose_stats_array = blood_glucose_stats.slice(1,-1).split(",").map(Number)
+        const insulin_dosage_stats_array = insulin_dosage_stats.slice(1,-1).split(",").map(Number)
+        const weight_stats_array = weight_stats.slice(1,-1).split(",").map(Number)
+        const step_count_stats_array = step_count_stats.slice(1,-1).split(",").map(Number)
+        
+        if (selectedStat == 'blood_glucose'){
+            stats = blood_glucose_stats_array;
+            chartTitle = 'Blood Glucose Level (mmol/L)';
+            chartBackgroundColor = 'rgb(209, 14, 196)';
+            chartBorderColor = 'rgb(209, 14, 196)';
+        } 
+        
+        if (selectedStat == 'exercise'){
+            stats = step_count_stats_array;
+            chartTitle = 'Exercise (step count)';
+            chartBackgroundColor = 'rgb(23, 185, 191)';
+            chartBorderColor = 'rgb(23, 185, 191)';
+        }
+
+        if (selectedStat == 'insulin_dosage'){
+            stats = insulin_dosage_stats_array;
+            chartTitle = 'Insulin Dosage Taken (number of doses)';
+            chartBackgroundColor = 'rgb(7, 29, 225)';
+            chartBorderColor = 'rgb(7, 29, 225)';
+        }
+
+        if (selectedStat == 'weight'){
+            stats = weight_stats_array;
+            chartTitle = 'Weight (kg)';
+            chartBackgroundColor = 'rgb(40, 192, 35)';
+            chartBorderColor = 'rgb(40, 192, 35)';
+        }
+
+
+        myChart.data.datasets[0].data = stats
+        myChart.options.plugins.title.display = true
+        myChart.options.plugins.title.text = chartTitle
+        myChart.data.datasets[0].backgroundColor = chartBackgroundColor
+        myChart.data.datasets[0].borderColor = chartBorderColor
+        myChart.update()
+
+    })
+    
+
+
+  </script>
+
+</body>

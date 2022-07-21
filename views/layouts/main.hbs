@@ -1,0 +1,65 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="/css/login.css" />
+    <link rel="stylesheet" href="/css/title.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300&family=Space+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alata&family=Fredoka:wght@300&family=Palette+Mosaic&family=Roboto:wght@700&family=Rock+Salt&family=Space+Mono&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav>
+      <!---img class="logo" src="logo2.png"> --->
+        <!-- <label class="logo"><a href="#"><img src="logo2.png"></a></label> -->
+      <a href="/index" class="logo"><img src="images/logo2.png" /></a>
+      <div class="logo-text">Diabetes@Home</div>
+      <!-- <label class="logo-text">Diabetes@Home</label> -->
+      <div class="web-menu">
+        <a href="/login">Log in</a>
+        <a href="/about_website">About This Website</a>
+        <a href="/about_diabetes">About Diabetes</a>
+        <!-- <a href="#">Login </a> -->
+
+      </div>
+
+      <div id="mobi-menu-main" class="mobi-menu">
+        <div onclick="dropContent()" class="hamburger">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+        <div id="drop-down" class="mobi-menu-btn-content">
+          <a href="/index">Home</a>
+          <a href="/about_website">About This Website</a>
+          <a href="/about_diabetes">About Diabetes</a>
+          <a href="/login">Login</a>
+        </div>
+
+      </div>
+
+    </nav>
+
+    <script type="text/javascript" src="/js/behavior.js"></script>
+    <h1 class ="title-desktop">{{title}}</h1>
+    <main>
+      {{{body}}}
+    </main>
+
+  </body>
+
+  <div class="footer">
+    <p>Copyright 2022 - Diabetes@Home</p>
+  </div>
+
+</html>

@@ -1,0 +1,285 @@
+</ul><head><title>Doctor Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/doctor.css">
+    <script src="https://kit.fontawesome.com/55423914b8.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div>
+    {{#if restricted_action}}
+      <p class="err-msg">Action outside authorised pages.</p>
+    {{/if}}
+</div>
+
+<div class="dr-home-header">
+    <h1>Hi, {{doctor_name}}.</h1>
+    <a href="/dr_patient_comments" id='anchor_patient_comments'>
+      <button type="button" id="patient_comments_btn">Read Patient Comments</button>
+    </a>
+    <a href="/dr_home/register_patient" id='anchor_register_patient'>
+      <button type="button" id="register_patient_btn">Register New Patient</button>
+    </a>
+</div>
+
+<div class="table_out_flex table_out_legend_flex">
+  <div>
+  </div>
+  <legend_list>
+      <legend_element>
+        <hover href="#">Table Legend <i class="fa-solid fa-circle-info"></i></hover>
+        <legend_list>
+           <legend_element>
+               <legend_element_overlimit> <i class="fa-solid fa-arrow-up"></i>
+           - Data above expected threshold</legend_element> </legend_element_overlimit>
+           <legend_element> 
+               <legend_element_underlimit> <i class="fa-solid fa-arrow-down"></i> 
+           - Data below expected threshold</legend_element></legend_element_underlimit>
+           <legend_element> <i class="fa-solid fa-question"></i> - Required data not entered</legend_element>
+           <legend_element> Blank - Data entry not required</legend_element>
+           <legend_element> <i class="fa-solid fa-envelope"></i> - Hover to display message</legend_element>
+           <br>
+           <legend_element>
+               <legend_element_entry>Click on a patient's name to enter their profile
+               </legend_element_entry>
+            </legend_element>
+        </legend_list>
+      </legend_element>
+    </legend_list>
+</div>
+
+<div class="dr-home-dashboard">
+    <table>
+        <tr>
+            <th>Patient Name</th>
+            <th>Blood Glucose <br> <span>[nmol/L]</span></th>
+            <th>Insulin Doses <br> <span>[number of doses]</span></th>
+            <th>Weight <br> <span>[kg]</span></th>
+            <th>Exercise <br> <span>[number of steps]</span></th>
+        </tr>
+        {{#each patients}}
+        {{#if this.enteredToday}}
+        <tr>
+            <td><a href="/dr_individual_patients/{{this._id}}">{{this.first_name}} {{this.last_name}}</a></td>
+            {{#if this.requirement.blood_glucose}}
+                {{#if this.blood_glucose.submitted}}
+                    {{#if (overthreshold this.blood_glucose.metric this.thresholds.blood_glucose.max)}}
+                        <td style="background-color:lightcoral; text-align: center"><div class = "measurement-flex">
+                        <div class = "dashboard-item"><i class="fa-solid fa-arrow-up"></i></div>
+                        <div class = "dashboard-item">{{this.blood_glucose.metric}}</div> 
+
+                        {{#if this.blood_glucose.comment}}
+                        <div class="icon_box dashboard-item"><i class="fa-solid fa-envelope"></i>
+                            <span class="comment">{{this.blood_glucose.comment}}</span>
+                        </div>
+                        {{else}}
+                        <div class = "dashboard-item"></div> </div></td>
+                        {{/if}}
+
+                    {{else}} {{#if (underthreshold this.blood_glucose.metric this.thresholds.blood_glucose.min)}}
+                        <td style="background-color:lightblue; text-align: center"><div class = "measurement-flex">
+                        <div class = "dashboard-item"><i class="fa-solid fa-arrow-down"></i></div>
+                        <div class = "dashboard-item">{{this.blood_glucose.metric}}</div> 
+
+                        {{#if this.blood_glucose.comment}}
+                        <div class="icon_box dashboard-item"><i class="fa-solid fa-envelope"></i>
+                            <span class="comment">{{this.blood_glucose.comment}}</span>
+                        </div>
+                        {{else}}
+                        <div class = "dashboard-item"></div> </div></td>
+                        {{/if}}
+
+                    {{else}}
+                        <td style =  "text-align: center;"> <div class = "measurement-flex">
+                        <div class = "dashboard-item"> </div>
+                        <div class = "dashboard-item">{{this.blood_glucose.metric}} </div>  
+                        {{#if this.blood_glucose.comment}}
+                        <div class="icon_box dashboard-item"><i class="fa-solid fa-envelope"></i>
+                            <span class="comment">{{this.blood_glucose.comment}}</span>
+                        </div>
+                        {{else}}
+                        <div class = "dashboard-item"></div>  </div></td>
+                        {{/if}}
+                    {{/if}}
+                    {{/if}}
+                {{else}}
+                    <td style = "text-align: center;"><i class="fa-solid fa-question"></i></td>
+                {{/if}}
+            {{else}}
+                <td></td>
+            {{/if}}
+
+            {{#if this.requirement.insulin_dosage}}
+                {{#if this.insulin_dosage.submitted}}
+                    {{#if (overthreshold this.insulin_dosage.metric this.thresholds.insulin_dosage.max)}}
+                        <td style="background-color:lightcoral; text-align: center"><div class = "measurement-flex">
+                        <div class = "dashboard-item"><i class="fa-solid fa-arrow-up"></i></div>
+                        <div class = "dashboard-item">{{this.insulin_dosage.metric}}</div> 
+
+                        {{#if this.insulin_dosage.comment}}
+                        <div class="icon_box dashboard-item"><i class="fa-solid fa-envelope"></i>
+                            <span class="comment">{{this.insulin_dosage.comment}}</span>
+                        </div>
+                        {{else}}
+                        <div class = "dashboard-item"></div> </div></td>
+                        {{/if}}
+
+                    {{else}} {{#if (underthreshold this.insulin_dosage.metric this.thresholds.insulin_dosage.min)}}
+                        <td style="background-color:lightblue; text-align: center"><div class = "measurement-flex">
+                        <div class = "dashboard-item"><i class="fa-solid fa-arrow-down"></i></div> 
+                        <div class = "dashboard-item">{{this.insulin_dosage.metric}}</div> 
+
+                        {{#if this.insulin_dosage.comment}}
+                        <div class="icon_box dashboard-item"><i class="fa-solid fa-envelope"></i>
+                            <span class="comment">{{this.insulin_dosage.comment}}</span>
+                        </div>
+                        {{else}}
+                        <div class = "dashboard-item"></div> </div></td>
+                        {{/if}}
+
+                    {{else}}
+                        <td style =  "text-align: center;"> <div class = "measurement-flex">
+                        <div class = "dashboard-item"> </div>
+                        <div class = "dashboard-item">{{this.insulin_dosage.metric}} </div> 
+                        {{#if this.insulin_dosage.comment}}
+                        <div class="icon_box dashboard-item"><i class="fa-solid fa-envelope"></i>
+                            <span class="comment">{{this.insulin_dosage.comment}}</span>
+                        </div>
+                        {{else}}
+                        <div class = "dashboard-item"></div>  </div></td>
+                        {{/if}}
+                    {{/if}}
+                    {{/if}}
+                {{else}}
+                    <td style = "text-align: center;"><i class="fa-solid fa-question"></i></td>
+                {{/if}}
+            {{else}}
+                <td></td>
+            {{/if}}
+            
+            {{#if this.requirement.weight}}
+                {{#if this.weight.submitted}}
+                    {{#if (overthreshold this.weight.metric this.thresholds.weight.max)}}
+                        <td style="background-color:lightcoral; text-align: center"><div class = "measurement-flex">
+                        <div class = "dashboard-item"><i class="fa-solid fa-arrow-up"></i></div>
+                        <div class = "dashboard-item">{{this.weight.metric}}</div> 
+
+                        {{#if this.weight.comment}}
+                        <div class="icon_box dashboard-item"><i class="fa-solid fa-envelope"></i>
+                            <span class="comment">{{this.weight.comment}}</span>
+                        </div>
+                        {{else}}
+                        <div class = "dashboard-item"></div> </div></td>
+                        {{/if}}
+
+                    {{else}} {{#if (underthreshold this.weight.metric this.thresholds.weight.min)}}
+                        <td style="background-color:lightblue; text-align: center"><div class = "measurement-flex"> 
+                        <div class = "dashboard-item"><i class="fa-solid fa-arrow-down"></i></div> 
+                        <div class = "dashboard-item">{{this.weight.metric}}</div>
+
+                        {{#if this.weight.comment}}
+                        <div class="icon_box dashboard-item"><i class="fa-solid fa-envelope"></i>
+                            <span class="comment">{{this.weight.comment}}</span>
+                        </div>
+                        {{else}}
+                        <div class = "dashboard-item"></div> </div></td>
+                        {{/if}}
+
+                    {{else}}
+                        <td style =  "text-align: center;"> <div class = "measurement-flex">
+                        <div class = "dashboard-item"> </div>
+                        <div class = "dashboard-item">{{this.weight.metric}} </div> 
+                        {{#if this.weight.comment}}
+                        <div class="icon_box dashboard-item"><i class="fa-solid fa-envelope"></i>
+                            <span class="comment">{{this.weight.comment}}</span>
+                        </div>
+                        {{else}}
+                            <div class = "dashboard-item"></div>  </div></td>
+                        {{/if}}
+                    {{/if}}
+                    {{/if}}
+                {{else}} 
+                    <td style = "text-align: center;"><i class="fa-solid fa-question"></i></td>
+                {{/if}}
+            {{else}}
+                <td></td>
+            {{/if}}
+            
+
+            {{#if this.requirement.step_count}}
+                {{#if this.step_count.submitted}}
+                    {{#if (overthreshold this.step_count.metric this.thresholds.step_count.max)}}
+                        <td style="background-color:lightcoral; text-align: center"><div class = "measurement-flex">
+                        <div class = "dashboard-item"><i class="fa-solid fa-arrow-up"></i></div>
+                        <div class = "dashboard-item">{{this.step_count.metric}}</div> 
+
+                        {{#if this.step_count.comment}}
+                        <div class="icon_box dashboard-item"><i class="fa-solid fa-envelope"></i>
+                            <span class="comment">{{this.step_count.comment}}</span>
+                        </div>
+                        {{else}}
+                        <div class = "dashboard-item"></div> </div></td>
+                        {{/if}}
+
+                    {{else}} {{#if (underthreshold this.step_count.metric this.thresholds.step_count.min)}}
+                        <td style="background-color:lightblue; text-align: center"><div class = "measurement-flex">
+                        <div class = "dashboard-item"><i class="fa-solid fa-arrow-down"></i></div> 
+                        <div class = "dashboard-item">{{this.step_count.metric}}</div> 
+
+                        {{#if this.step_count.comment}}
+                        <div class="icon_box dashboard-item"><i class="fa-solid fa-envelope"></i>
+                            <span class="comment">{{this.step_count.comment}}</span>
+                        </div>
+                        {{else}}
+                        <div class = "dashboard-item"></div> </div></td>
+                        {{/if}}
+
+                    {{else}}
+                        <td style =  "text-align: center;"> <div class = "measurement-flex">
+                        <div class = "dashboard-item"> </div>
+                        <div class = "dashboard-item">{{this.step_count.metric}} </div> 
+                        {{#if this.step_count.comment}}
+                        <div class="icon_box dashboard-item"><i class="fa-solid fa-envelope"></i>
+                            <span class="comment">{{this.step_count.comment}}</span>
+                        </div>
+                        {{else}}
+                            <div class = "dashboard-item"></div>  </div></td>
+                        {{/if}}
+                    {{/if}}
+                    {{/if}}
+                {{else}}
+                    <td style = "text-align: center;"><i class="fa-solid fa-question"></i></td>
+                {{/if}}
+            {{else}}
+                <td></td>
+            {{/if}}
+        </tr>
+        {{else}}
+            <tr>
+            <td><a href="/dr_individual_patients/{{this._id}}">{{this.first_name}} {{this.last_name}}</a></td>
+            {{#if this.requirement.blood_glucose}}
+                <td style = "text-align: center;"><i class="fa-solid fa-question"></i></td>
+            {{else}}
+                <td></td>
+            {{/if}}
+            {{#if this.requirement.insulin_dosage}}
+                <td style = "text-align: center;"><i class="fa-solid fa-question"></i></td>
+                {{else}}
+                <td></td>
+            {{/if}}
+            {{#if this.requirement.weight}}
+                <td style = "text-align: center;"><i class="fa-solid fa-question"></i></td>
+                {{else}}
+                <td></td>
+            {{/if}}
+            {{#if this.requirement.step_count}}
+                <td style = "text-align: center;"><i class="fa-solid fa-question"></i></td>
+                {{else}}
+                <td></td>
+            {{/if}}
+            </tr>
+        {{/if}}
+        {{/each}}
+    </table>
+</div>
+</body>

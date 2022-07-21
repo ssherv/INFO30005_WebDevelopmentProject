@@ -1,0 +1,109 @@
+.leaderboard-intro {
+    line-height: 25px;
+}
+
+h1 {
+    color: #FFA51E;
+    font-size: xx-large;
+}
+
+h3{
+    text-align: center;
+}
+
+p {
+    text-align: center;
+}
+
+.blue-emphasis {
+    color: #0375B4;
+}
+
+#leaderboard {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.firework-img {
+    height: 350px;
+    width: 350px;
+}
+
+table {      
+    background-color: #f3f3f3;
+    padding: 0 25px;
+    margin: 100px 0;
+    box-sizing: border-box;
+    border-radius: 15px;
+    border-spacing: 0 20px;
+}
+
+table img {
+    height: 65px;
+    width: 65px;
+}
+
+td h2 {
+    margin-left: 25px;
+}
+
+#col-engagement-rate {
+    color:#0375B4
+}
+
+a.back-to-home {
+    align-self: center;
+    width: 360px;
+}
+
+a button {
+    background-color: #0375B4;
+    color: white;
+    padding: 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 12px;
+    font-size: x-large;
+    white-space: pre-line;
+    width: 100%;
+}
+
+@media only screen and (max-width: 1025px) { /* for tablet screens  */
+
+    table {
+        margin: 25px 70px;
+        border-spacing: 0 10px;
+    }
+
+    .firework-img {
+        height: 200px;
+        width: 200px;
+    }
+
+    a.back-to-home {
+        margin-top: 30px;
+    }
+}
+
+@media only screen and (max-width: 376px) { /* for mobile screens  */
+    .leaderboard-intro {
+        padding: 0 5%;
+    }
+
+    table img {
+        height: 50px;
+        width: 50px;
+    }
+
+    table {
+        margin: 3%;
+        padding: 10px 20px;
+        border-radius: 20px;
+        border-spacing: 0 10px;
+    }
+
+    .firework-img {
+        display: none;
+    }
+}

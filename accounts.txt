@@ -1,0 +1,61 @@
+GROUP 1:
+
+- Doctor:
+chemsworth@gmail.com
+00000000
+
+- Patient:
+
+Pat Cummins
+pat.cummins@gmail.com
+helloitspat
+
+Abrar Zahin
+abrah@hotmail.com
+helloitsabrar
+
+Sherv Tom
+tomh@hotmail.com
+helloitstom
+
+Tri Le
+lequangtri@2000@gmail.com
+Dl8PCCcQ
+
+Mohammad Al-Jassim
+mohammadaljassim@gmail.com
+theskyisblue123
+
+Monkey D Luffy
+pirateking@gmail.com
+ZrZXZo6k
+=================================================
+
+GROUP 2:
+- Doctor:
+
+Hugh Jackman
+hjackman@gmail.com
+hjackman
+
+- Patient:
+Rick Astley
+rick@gmail.com
+TLfdCSdL
+
+Michael Oliver
+moliver@hotmail.com
+6y5yUE6Z
+
+Yoshimi Yamashita
+yyamashita@outlook.com
+UdwKV2wp
+
+Pablo Escobar
+pescobar@bing.com
+zBB6rcAn
+
+
+
+
+/preferences?password_updated=true

@@ -1,0 +1,148 @@
+/*
+                    CSS FOR REGISTERING A PATIENT
+                                                                */
+.register-patient-intro {
+    text-align: center;
+}
+
+.register-patient-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.blue-emphasis {
+    color: #0375B4;
+}
+
+/*     CSS to style the 'Personal details' section     */
+.patient-details {
+    flex-basis: 30%;
+    padding-left: 50px;
+}
+
+.patient-details label {
+    display: inline-block;
+    font-size: larger;
+    font-weight: bold;
+    width: 200px;
+    margin-bottom: 50px;
+}
+  
+.patient-details input, textarea {
+    width: 50%;
+    padding: 12px 20px;
+    border: 2px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#bio {
+    vertical-align: top;
+    resize: none;
+}
+
+
+/*     CSS to style the 'Measurement requirements' section     */
+.input-metrics {
+    flex-basis: 31%;
+    padding-left: 50px;  
+} 
+
+h3 {
+    display: inline;
+    margin-bottom: 20px;
+}
+
+.low-t {
+    margin-left: 235px;
+}
+
+.high-t {
+    margin-left: 30px;
+}
+
+.metric-item {
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+.metric-item p {
+    margin-left: 0;
+}
+
+.input-metrics label { 
+    display: inline-block;
+    font-size: larger;
+    font-weight: bold;
+    width: 160px;
+}
+
+.input-metrics input[type="checkbox"] {
+    margin-right: 50px;
+    height: 15px;
+    width: 15px;
+}
+
+.input-metrics input[type="number"] {
+    width: 20%;
+    padding: 12px 20px;
+    border: 2px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 12px;
+    margin: 0 15px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/*     CSS to style the buttons     */
+.buttons {
+    text-align: center;
+    margin-top: 80px;
+}
+
+button {
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 12px;
+    font-size: x-large;
+    white-space: pre-line;
+    width: 15%;
+}
+
+button[type="reset"] {
+    background-color: #a7a7a7;
+    margin-right: 100px;
+}
+
+button[type="submit"] {
+    background-color: #ffa51e;
+}
+
+/*
+                    CSS FOR SUCCESSFUL REGISTER
+                                                                */
+
+table {
+    margin: 100px auto 0 auto;
+    border-spacing: 30px;
+    background-color: #f3f3f3;
+    box-sizing: border-box;
+    border-radius: 15px;
+}
+
+.home-button{
+    background-color: #ffa51e;
+    width: 100%;
+    align-self: center;
+}
+
+.home-nav{
+    display: block;
+    width: 10%;
+    margin-top: 5%;
+    align-self: center;
+    text-align: center;
+}

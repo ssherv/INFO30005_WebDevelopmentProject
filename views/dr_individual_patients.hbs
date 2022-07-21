@@ -1,0 +1,404 @@
+</ul><head><title>Doctor Patients</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/doctor.css">
+    <script src="https://kit.fontawesome.com/55423914b8.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div class="indiv-patient-parent-container">
+
+    <div class="left-child-container">
+        <div class="left-header">
+            <h1>{{thispatient.first_name}}'s Data</h1>
+            <a href="/dr_home">
+                <button type="button" id="home-from-indiv-pt-btn">Back to dashboard</button>
+            </a>
+             <a href="/dr_individual_patients/{{thispatient._id}}/visualisations">
+                <button type="button" id="view-charts-btn">View charts</button>
+            </a>
+            <a href="/edit_thresholds/{{thispatient._id}}">
+                <button type="button" id="edit-patient-threshold-btn">Edit measurements <br> and thresholds</button>
+            </a>
+        </div>
+
+        <div class="patient-health-details-section">
+            <table>
+                <tr>
+                    <th style="width:200px">Date</th>
+                    <th style="width:150px">Category</th>
+                    <th style="width:175px">Value</th>
+                    <th style="width:518px">Comment</th>
+                </tr>
+                {{#if thispatient.entryNeeded}}
+                    {{#if thispatient.requirement.blood_glucose}}
+                        <tr>
+                        <td>{{thispatient.currdate}}</td>
+                        <td>Blood Glucose</td>
+                        <td style = "text-align: center;"><i class="fa-solid fa-question"></i></td>
+                        <td></td>
+                        </tr>
+                    {{/if}}
+                    {{#if thispatient.requirement.insulin_dosage}}
+                        <tr>
+                        <td>{{thispatient.currdate}}</td>
+                        <td>Insulin Doses</td>
+                        <td style = "text-align: center;"><i class="fa-solid fa-question"></i></td>
+                        <td></td>
+                        </tr>
+                    {{/if}}
+                    {{#if thispatient.requirement.weight}}
+                        <tr>
+                        <td>{{thispatient.currdate}}</td>
+                        <td>Weight</td>
+                        <td style = "text-align: center;"><i class="fa-solid fa-question"></i></td>
+                        <td></td>
+                        </tr>
+                    {{/if}}
+                    {{#if thispatient.requirement.step_count}}
+                        <tr>
+                        <td>{{thispatient.currdate}}</td>
+                        <td>Exercise</td>
+                        <td style = "text-align: center;"><i class="fa-solid fa-question"></i></td>
+                        <td></td>
+                        </tr>
+                    {{/if}}
+                {{/if}}
+                {{#if thispatient.lastEntry}}
+                {{#if thispatient.requirement.blood_glucose}}
+                <tr>
+                    {{#if thispatient.blood_glucose.submitted}}
+                        <td>{{thispatient.blood_glucose.submit_time}}</td>
+                    {{else}}
+                        <td>{{thispatient.lastDate}}</td>
+                    {{/if}}
+                    <td>Blood Glucose</td>
+                    {{#if thispatient.blood_glucose.submitted}}
+                        {{#if (overthreshold thispatient.blood_glucose.metric thispatient.thresholds.blood_glucose.max)}}
+                            <td style="background-color:lightcoral; text-align: center"><div class = "measurement-flex">
+                            <div class = "measurement-item">{{thispatient.blood_glucose.metric}}</div> 
+                            <div class = "measurement-item"><i class="fa-solid fa-arrow-up"></i></div> </div></td>
+                        {{else}} {{#if (underthreshold thispatient.blood_glucose.metric thispatient.thresholds.blood_glucose.min)}}
+                            <td style="background-color:lightblue; text-align: center"><div class = "measurement-flex">
+                            <div class = "measurement-item">{{thispatient.blood_glucose.metric}}</div> 
+                            <div class = "measurement-item"><i class="fa-solid fa-arrow-down"></i></div> </div></td>
+                        {{else}}
+                            <td style = "text-align: center;">{{thispatient.blood_glucose.metric}}</td>
+                        {{/if}}
+                        {{/if}}
+                    {{else}}
+                        <td style = "text-align: center;"><i class="fa-solid fa-question"></i></td>
+                    {{/if}}
+
+                    {{#if thispatient.blood_glucose.comment}}
+                   <td>{{thispatient.blood_glucose.comment}}</td>
+                   {{else}}
+                   <td></td>
+                   {{/if}}
+                </tr>
+                {{/if}}
+
+
+                {{#if thispatient.requirement.insulin_dosage}}
+                <tr>
+                    {{#if thispatient.insulin_dosage.submitted}}
+                        <td>{{thispatient.insulin_dosage.submit_time}}</td>
+                    {{else}}
+                        <td>{{thispatient.lastDate}}</td>
+                    {{/if}}
+
+                    <td>Insulin Doses</td>
+
+                    {{#if thispatient.insulin_dosage.submitted}}
+                        {{#if (overthreshold thispatient.insulin_dosage.metric thispatient.thresholds.insulin_dosage.max)}}
+                            <td style="background-color:lightcoral; text-align: center"><div class = "measurement-flex">
+                            <div class = "measurement-item">{{thispatient.insulin_dosage.metric}}</div> 
+                            <div class = "measurement-item"><i class="fa-solid fa-arrow-up"></i></div> </div></td>
+                        {{else}} {{#if (underthreshold thispatient.insulin_dosage.metric thispatient.thresholds.insulin_dosage.min)}}
+                            <td style="background-color:lightblue; text-align: center"><div class = "measurement-flex">
+                            <div class = "measurement-item">{{thispatient.insulin_dosage.metric}}</div> 
+                            <div class = "measurement-item"><i class="fa-solid fa-arrow-down"></i></div> </div></td>
+                        {{else}}
+                            <td style = "text-align: center;">{{thispatient.insulin_dosage.metric}}</td>
+                        {{/if}}
+                        {{/if}}
+                    {{else}}
+                        <td style = "text-align: center;"><i class="fa-solid fa-question"></i></td>
+                    {{/if}}
+
+                    {{#if thispatient.insulin_dosage.comment}}
+                   <td>{{thispatient.insulin_dosage.comment}}</td>
+                   {{else}}
+                   <td></td>
+                   {{/if}}
+                </tr>
+                {{/if}}
+
+
+                {{#if thispatient.requirement.weight}}
+                <tr>
+                    {{#if thispatient.weight.submitted}}
+                        <td>{{thispatient.weight.submit_time}}</td>
+                    {{else}}
+                        <td>{{thispatient.lastDate}}</td>
+                    {{/if}}
+
+                    <td>Weight</td>
+
+                    {{#if thispatient.weight.submitted}}
+                        {{#if (overthreshold thispatient.weight.metric thispatient.thresholds.weight.max)}}
+                            <td style="background-color:lightcoral; text-align: center"><div class = "measurement-flex">
+                            <div class = "measurement-item">{{thispatient.weight.metric}}</div> 
+                            <div class = "measurement-item"><i class="fa-solid fa-arrow-up"></i></div> </div></td>
+                        {{else}} {{#if (underthreshold thispatient.weight.metric thispatient.thresholds.weight.min)}}
+                            <td style="background-color:lightblue; text-align: center"><div class = "measurement-flex">
+                            <div class = "measurement-item">{{thispatient.weight.metric}}</div> 
+                            <div class = "measurement-item"><i class="fa-solid fa-arrow-down"></i></div> </div></td>
+                        {{else}}
+                            <td style = "text-align: center;">{{thispatient.weight.metric}}</td>
+                        {{/if}}
+                        {{/if}}
+                    {{else}}
+                        <td style = "text-align: center;"><i class="fa-solid fa-question"></i></td>
+                    {{/if}}
+
+                    {{#if thispatient.weight.comment}}
+                   <td>{{thispatient.weight.comment}}</td>
+                   {{else}}
+                   <td></td>
+                   {{/if}}
+                </tr>
+                {{/if}}
+
+
+                {{#if thispatient.requirement.step_count}}
+                <tr>
+                    {{#if thispatient.step_count.submitted}}
+                        <td>{{thispatient.step_count.submit_time}}</td>
+                    {{else}}
+                        <td>{{thispatient.lastDate}}</td>
+                    {{/if}}
+
+                    <td>Exercise</td>
+
+                    {{#if thispatient.step_count.submitted}}
+                        {{#if (overthreshold thispatient.step_count.metric thispatient.thresholds.step_count.max)}}
+                            <td style="background-color:lightcoral; text-align: center"><div class = "measurement-flex">
+                            <div class = "measurement-item">{{thispatient.step_count.metric}}</div> 
+                            <div class = "measurement-item"><i class="fa-solid fa-arrow-up"></i></div> </div></td>
+                        {{else}} {{#if (underthreshold thispatient.step_count.metric thispatient.thresholds.step_count.min)}}
+                            <td style="background-color:lightblue; text-align: center"><div class = "measurement-flex">
+                            <div class = "measurement-item">{{thispatient.step_count.metric}}</div> 
+                            <div class = "measurement-item"><i class="fa-solid fa-arrow-down"></i></div> </div></td>
+                        {{else}}
+                            <td style = "text-align: center;">{{thispatient.step_count.metric}}</td>
+                        {{/if}}
+                        {{/if}}
+                    {{else}}
+                        <td style = "text-align: center;"><i class="fa-solid fa-question"></i></td>
+                    {{/if}}
+
+                    {{#if thispatient.step_count.comment}}
+                   <td>{{thispatient.step_count.comment}}</td>
+                   {{else}}
+                   <td></td>
+                   {{/if}}
+                </tr>
+                {{/if}}
+                {{/if}}
+
+
+                {{#each health_stats}}
+                {{#if this.patientId.requirement.blood_glucose}}
+                <tr>
+                    {{#if this.blood_glucose.submitted}}
+                        <td>{{this.blood_glucose.submit_time}}</td>
+                    {{else}}
+                        <td>{{this.date}}</td>
+                    {{/if}}
+                    <td>Blood Glucose</td>
+
+                    {{#if this.blood_glucose.submitted}}
+                        {{#if (overthreshold this.blood_glucose.metric this.patientId.thresholds.blood_glucose.max)}}
+                            <td style="background-color:lightcoral; text-align: center"><div class = "measurement-flex">
+                            <div class = "measurement-item">{{this.blood_glucose.metric}}</div> 
+                            <div class = "measurement-item"><i class="fa-solid fa-arrow-up"></i></div> </div></td>
+                        {{else}} {{#if (underthreshold this.blood_glucose.metric this.patientId.thresholds.blood_glucose.min)}}
+                            <td style="background-color:lightblue; text-align: center"><div class = "measurement-flex">
+                            <div class = "measurement-item">{{this.blood_glucose.metric}}</div> 
+                            <div class = "measurement-item"><i class="fa-solid fa-arrow-down"></i></div> </div></td>
+                        {{else}}
+                            <td style = "text-align: center;">{{this.blood_glucose.metric}}</td>
+                        {{/if}}
+                        {{/if}}
+                    {{else}}
+                        <td style = "text-align: center;"><i class="fa-solid fa-question"></i></td>
+                    {{/if}}
+
+                    {{#if this.blood_glucose.comment}}
+                   <td>{{this.blood_glucose.comment}}</td>
+                   {{else}}
+                   <td></td>
+                   {{/if}}
+                </tr>
+                {{/if}}
+
+
+                {{#if this.patientId.requirement.insulin_dosage}}
+                <tr>
+                    {{#if this.insulin_dosage.submitted}}
+                        <td>{{this.insulin_dosage.submit_time}}</td>
+                    {{else}}
+                        <td>{{this.date}}</td>
+                    {{/if}}
+
+                    <td>Insulin Doses</td>
+
+                    {{#if this.insulin_dosage.submitted}}
+                        {{#if (overthreshold this.insulin_dosage.metric this.patientId.thresholds.insulin_dosage.max)}}
+                            <td style="background-color:lightcoral; text-align: center"><div class = "measurement-flex">
+                            <div class = "measurement-item">{{this.insulin_dosage.metric}}</div> 
+                            <div class = "measurement-item"><i class="fa-solid fa-arrow-up"></i></div> </div></td>
+                        {{else}} {{#if (underthreshold this.insulin_dosage.metric this.patientId.thresholds.insulin_dosage.min)}}
+                            <td style="background-color:lightblue; text-align: center"><div class = "measurement-flex">
+                            <div class = "measurement-item">{{this.insulin_dosage.metric}}</div> 
+                            <div class = "measurement-item"><i class="fa-solid fa-arrow-down"></i></div> </div></td>
+                        {{else}}
+                            <td style = "text-align: center;">{{this.insulin_dosage.metric}}</td>
+                        {{/if}}
+                        {{/if}}
+                    {{else}}
+                        <td style = "text-align: center;"><i class="fa-solid fa-question"></i></td>
+                    {{/if}}
+
+                    {{#if this.insulin_dosage.comment}}
+                   <td>{{this.insulin_dosage.comment}}</td>
+                   {{else}}
+                   <td></td>
+                   {{/if}}
+                </tr>
+                {{/if}}
+
+
+                {{#if this.patientId.requirement.weight}}
+                <tr>
+                    {{#if this.weight.submitted}}
+                        <td>{{this.weight.submit_time}}</td>
+                    {{else}}
+                        <td>{{this.date}}</td>
+                    {{/if}}
+
+                    <td>Weight</td>
+
+                    {{#if this.weight.submitted}}
+                        {{#if (overthreshold this.weight.metric this.patientId.thresholds.weight.max)}}
+                            <td style="background-color:lightcoral; text-align: center"><div class = "measurement-flex">
+                            <div class = "measurement-item">{{this.weight.metric}}</div> 
+                            <div class = "measurement-item"><i class="fa-solid fa-arrow-up"></i></div> </div></td>
+                        {{else}} {{#if (underthreshold this.weight.metric this.patientId.thresholds.weight.min)}}
+                            <td style="background-color:lightblue; text-align: center"><div class = "measurement-flex">
+                            <div class = "measurement-item">{{this.weight.metric}}</div> 
+                            <div class = "measurement-item"><i class="fa-solid fa-arrow-down"></i></div> </div></td>
+                        {{else}}
+                            <td style = "text-align: center;">{{this.weight.metric}}</td>
+                        {{/if}}
+                        {{/if}}
+                    {{else}}
+                        <td style = "text-align: center;"><i class="fa-solid fa-question"></i></td>
+                    {{/if}}
+
+                    {{#if this.weight.comment}}
+                   <td>{{this.weight.comment}}</td>
+                   {{else}}
+                   <td></td>
+                   {{/if}}
+                </tr>
+                {{/if}}
+
+
+                {{#if this.patientId.requirement.step_count}}
+                <tr>
+                    {{#if this.step_count.submitted}}
+                        <td>{{this.step_count.submit_time}}</td>
+                    {{else}}
+                        <td>{{this.date}}</td>
+                    {{/if}}
+
+                    <td>Exercise</td>
+
+                    {{#if this.step_count.submitted}}
+                        {{#if (overthreshold this.step_count.metric this.patientId.thresholds.step_count.max)}}
+                            <td style="background-color:lightcoral; text-align: center"><div class = "measurement-flex">
+                            <div class = "measurement-item">{{this.step_count.metric}}</div> 
+                            <div class = "measurement-item"><i class="fa-solid fa-arrow-up"></i></div> </div></td>
+                        {{else}} {{#if (underthreshold this.step_count.metric this.patientId.thresholds.step_count.min)}}
+                            <td style="background-color:lightblue; text-align: center"><div class = "measurement-flex">
+                            <div class = "measurement-item">{{this.step_count.metric}}</div> 
+                            <div class = "measurement-item"><i class="fa-solid fa-arrow-down"></i></div> </div></td>
+                        {{else}}
+                            <td style = "text-align: center;">{{this.step_count.metric}}</td>
+                        {{/if}}
+                        {{/if}}
+                    {{else}}
+                        <td style = "text-align: center;"><i class="fa-solid fa-question"></i></td>
+                    {{/if}}
+
+                    {{#if this.step_count.comment}}
+                   <td>{{this.step_count.comment}}</td>
+                   {{else}}
+                   <td></td>
+                   {{/if}}
+                </tr>
+                {{/if}}
+                {{/each}}
+            </table>
+        </div>
+
+
+
+    </div>
+
+    <div class="right-child-container">
+
+        {{!-- <a id="home-button-anchor" href="/dr_home">
+            <button id="home-from-indiv-patient">Back to dashboard</button>
+        </a> --}}
+
+        <div class="support-message-section">
+            <h2>Send {{thispatient.first_name}} a message of support</h2>
+            <form name="support-message" action="/dr_individual_patient_message/{{thispatient._id}}" method="POST" onsubmit="return validateMessage()">
+                <input type="text" name="message" placeholder="Enter a message to support your patient" maxlength="100"/>
+                <button type="submit">Send message</button>
+            </form>
+            <br>
+            Previous message: {{thispatient.message}}
+        </div>
+
+        <div class="clinical-notes-section">
+            <h2>Clinical notes for {{thispatient.first_name}} </h2>
+            <div class="new-note-section">
+                <h3>Add a new note:</h3>
+                <form name="clinical-note" action="/dr_individual_patient_note/{{thispatient._id}}" method="POST" onsubmit="return validateClinicalNote()">
+                    <input type="text" name="note" placeholder="Add a new clinical note" maxlength="100"/>
+                    <button type="submit">Add note</button>
+                </form>
+            </div>           
+            <table>
+                <tr>
+                    <th style="width:200px">Date</th>
+                    <th style="width:400px">Note</th>
+                </tr>
+                {{#each notes}}
+                    <tr>
+                        <td>{{this.date}}</td>
+                        <td>{{this.comment}}</td>
+                    </tr>
+                {{/each}}
+            </table>
+
+            
+        </div>
+    </div>
+</div>    
+</body>
+

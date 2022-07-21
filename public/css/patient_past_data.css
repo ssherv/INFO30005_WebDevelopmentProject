@@ -1,0 +1,215 @@
+
+.historical-data-container {
+    display: flex;
+    align-self: center;
+}
+
+.historical-data-header {
+    display: flex;
+    margin: -50px 355px 0 355px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.historical-data-header h1 {
+    flex-basis: 65%;
+    text-align: left;
+}
+
+a.to-charts {
+    width: 200px;
+}
+
+a.back-to-home {
+    width: 200px;
+}
+
+button.home-from-indiv-pt-btn {
+    background-color: #0375B4;
+    color: white;
+    padding: 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 12px;
+    font-size: large;
+    white-space: pre-line;
+    width: 100%;
+}
+
+button.view-charts-btn {
+    background-color: #ffa51e;
+    color: white;
+    padding: 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 12px;
+    font-size: large;
+    white-space: pre-line;
+    width: 100%;
+}
+
+table {
+    border-collapse: collapse;
+    margin-bottom: 150px;
+}
+
+th {
+    background-color: #8665f7;
+    color: white;
+    font-size: large;
+    padding: 10px; 
+    width: 220px;
+}
+
+.comment-column {
+    width: 550px;
+}
+
+td {
+    background-color: white;
+    padding: 10px;
+    border: 1px solid rgb(211, 211, 211);
+}
+
+.icon_box {
+    position: relative;
+    display: none;
+    text-align: center;
+}
+  
+.icon_box .comment {
+    visibility: hidden;
+    width: 180px;
+    border-style: solid;
+    background-color: white;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: left;
+    z-index: 1;
+    top: 150%;
+    left: 50%;
+    margin-left: -200px;
+}
+
+.icon_box .comment::after {
+    content: "";
+    position: absolute;
+}
+
+.icon_box:hover .comment {
+    visibility: visible;
+}
+
+
+/*     Design for TABLET screens     */
+
+@media only screen and (max-width: 1025px) { 
+
+    .historical-data-header {
+        margin: -10px 0 0 0;
+        width: 950px;
+        align-self: center;
+    }
+
+    .historical-data-header h1 {
+        flex-basis: 60%;
+    }
+    
+    a.to-charts {
+        width: 180px;
+    }
+    
+    a.back-to-home {
+        width: 180px;
+    }
+
+    table {
+        width: 950px;
+    }
+
+    th {
+        font-size: medium;
+        padding: 5px; 
+        width: 160px;
+    }
+
+    .comment-column {
+        width: 360px;
+    }
+
+    a.back-to-home button {
+        padding: 15px;
+    }
+}
+
+
+
+/*     Design for MOBILE screens    */
+
+@media only screen and (max-width: 376px) {
+   
+    .historical-data-header {
+        margin: -30px 0 0 0;
+        width: 350px;
+        align-self: center;
+        flex-wrap: wrap;
+    }
+
+    .historical-data-header h1 {
+        margin-bottom: -15px;
+        text-align: center;
+        flex-basis: 100%;
+    }
+    
+    a.to-charts {
+        width: 150px;
+        height: 70px;
+        margin-bottom: 15px;
+    }
+    
+    a.back-to-home {
+        width: 150px;
+        height: 70px;
+        margin-bottom: 15px;
+    }
+
+    button.home-from-indiv-pt-btn {
+        padding: 1px 0px;
+        font-size: large;
+        width: 100%;
+    }
+    
+    button.view-charts-btn {
+        padding: 1px 0px;
+        font-size: large;
+        width: 100%;
+    }
+
+    table {
+        width: 350px;
+    }
+
+    th {
+        font-size: small;
+        padding: 5px; 
+        width: 110px;
+    }
+
+    span {
+        display: none;
+    } 
+
+    .comment-column {
+        width: 40px;
+    }
+
+    td {
+        font-size: small;
+    }
+
+    .icon_box {
+        position: relative;
+        display: inline-block;
+    }
+}
+

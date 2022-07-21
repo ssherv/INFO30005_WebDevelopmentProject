@@ -1,0 +1,60 @@
+{{! <!DOCTYPE html> }}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Diabetes@Home</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="/css/doctor.css" />
+    <link rel="stylesheet" href="/css/title.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300&family=Space+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alata&family=Fredoka:wght@300&family=Palette+Mosaic&family=Roboto:wght@700&family=Rock+Salt&family=Space+Mono&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav class="nav-user">
+      <a href="/dr_home" class="logo"><img src="/images/logo2.png" /></a>
+      <div class="logo-text-user">Diabetes@Home</div>
+      <div id="dr_menu" class="mobi-menu">
+        {{! <a hreft ="#"><img id="chat_icon" src="/images/chat.png" class="hamburger"></a> }}
+        <img
+          id="user-icon"
+          src="/images/user_profile.png"
+          onclick="dropContent()"
+          class="hamburger"
+        />
+        <div id="drop-down" class="mobi-menu-btn-content">
+          <a href="/dr_home/dr_preferences">Preferences</a>
+          <a href="/dr_home">Dashboard</a>
+          <a href="/dr_patient_comments">Patient comments</a>
+          <a href="/dr_home/register_patient">Add new patient</a>
+          <a href="/dr_home/about_websites">About This Website</a>
+          <a href="/dr_home/about_diabetes">About Diabetes</a>
+          <a href="/index">Log out</a>
+        </div>
+      </div>
+
+    </nav>
+          <h1>{{{title}}}</h1>
+    <script type="text/javascript" src="/js/behavior.js"></script>
+
+    <main>
+      {{{body}}}
+    </main>
+
+  </body>
+  
+
+  <div class="footer">
+    <p>Copyright 2022 - Diabetes@Home</p>
+  </div>
+
+</html>
